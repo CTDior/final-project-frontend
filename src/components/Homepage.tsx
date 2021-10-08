@@ -2,10 +2,18 @@ import { Button } from "@mui/material";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { signInWithGoogle, signOut } from "../firebaseConfig";
+import { Group } from "../models/IceBreaker";
+import { addGroup } from "../services/FinalProjectApiServices";
+import CreateAGroup from "./CreateAGroup";
 import "./Homepage.css";
 
 function Homepage() {
   const { user } = useContext(AuthContext);
+
+  function handleAddGroup(group: Group) {
+    addGroup(group);
+  }
+
   return (
     <div className="Homepage">
       <div>
@@ -18,9 +26,7 @@ function Homepage() {
         </Button>
       </div>
       <div>
-        <Button color="primary" variant="contained">
-          Create A Group
-        </Button>
+        <CreateAGroup onSubmit={handleAddGroup} />
       </div>
     </div>
   );

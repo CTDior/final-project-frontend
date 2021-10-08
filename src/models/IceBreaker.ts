@@ -12,5 +12,5 @@ export interface Group {
   _id?: string;
   name: string;
   adminUid?: string;
-  profileQuestions: string;
+  profileQuestions?: string;
 }
