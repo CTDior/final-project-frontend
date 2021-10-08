@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { signInWithGoogle, signOut } from "../firebaseConfig";
@@ -9,11 +10,17 @@ function Homepage() {
     <div className="Homepage">
       <div>
         <p>Welcome {user?.displayName}</p>
-        <button onClick={signInWithGoogle}>Sign In With Google</button>
-        <button onClick={signOut}>Sign Out</button>
+        <Button variant="outlined" onClick={signInWithGoogle}>
+          Sign In With Google
+        </Button>
+        <Button variant="outlined" onClick={signOut}>
+          Sign Out
+        </Button>
       </div>
       <div>
-        <button>Create A Group</button>
+        <Button color="primary" variant="contained">
+          Create A Group
+        </Button>
       </div>
     </div>
   );
