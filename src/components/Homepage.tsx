@@ -12,6 +12,9 @@ function Homepage() {
         <button onClick={signInWithGoogle}>Sign In With Google</button>
         <button onClick={signOut}>Sign Out</button>
       </div>
+      <div>
+        <button>Create A Group</button>
+      </div>
     </div>
   );
 }
