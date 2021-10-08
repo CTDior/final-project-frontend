@@ -17,3 +17,7 @@ export function fetchAllGroups(): Promise<Group[]> {
 export function addGroupMember(member: GroupMember): Promise<GroupMember> {
   return axios.post(`${baseUrl}/group-members`, member).then((res) => res.data);
 }
+
+export function addGroup(group: Group): Promise<Group> {
+  return axios.post(`${baseUrl}/groups`, group).then((res) => res.data);
+}
