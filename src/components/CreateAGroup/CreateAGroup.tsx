@@ -1,3 +1,5 @@
+/** @format */
+
 import {
   FormControl,
   InputLabel,
@@ -7,7 +9,7 @@ import {
   Button,
 } from "@mui/material";
 import React, { useState } from "react";
-import { Group } from "../models/IceBreaker";
+import { Group } from "../../models/IceBreaker";
 import "./CreateAGroup.css";
 
 interface Props {

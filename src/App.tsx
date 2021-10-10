@@ -1,9 +1,12 @@
+/** @format */
+
 import "./App.css";
-import Homepage from "./components/Homepage";
+import Homepage from "./components/Homepage/Homepage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import CreateAGroup from "./components/CreateAGroup";
+import CreateAGroup from "./components/CreateAGroup/CreateAGroup";
 import { addGroup } from "./services/FinalProjectApiServices";
 import { Group } from "./models/IceBreaker";
+import GroupPage from "./components/GroupPage/GroupPage";
 
 function App() {
   function handleAddGroup(group: Group) {
@@ -19,6 +22,9 @@ function App() {
           </Route>
           <Route path="/group/create" exact>
             <CreateAGroup onSubmit={handleAddGroup} />
+          </Route>
+          <Route path="/group/:id">
+            <GroupPage />
           </Route>
         </Switch>
       </Router>

@@ -1,9 +1,11 @@
+/** @format */
+
 import { Button } from "@mui/material";
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { signInWithGoogle, signOut } from "../firebaseConfig";
-import { Group } from "../models/IceBreaker";
-import { addGroup } from "../services/FinalProjectApiServices";
+import { AuthContext } from "../../context/AuthContext";
+import { signInWithGoogle, signOut } from "../../firebaseConfig";
+import { Group } from "../../models/IceBreaker";
+import { addGroup } from "../../services/FinalProjectApiServices";
 
 import "./Homepage.css";
 

@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import { Group, GroupMember } from "../models/IceBreaker";
 
@@ -12,6 +14,18 @@ export function fetchAllGroupMembers(): Promise<GroupMember[]> {
 
 export function fetchAllGroups(): Promise<Group[]> {
   return axios.get(`${baseUrl}/groups`).then((res) => res.data);
+}
+
+export function fetchGroupById(_id: string): Promise<Group> {
+  return axios
+    .get(`${baseUrl}/group`, {
+      params: {
+        _id: _id,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
 }
 
 export function addGroupMember(member: GroupMember): Promise<GroupMember> {
