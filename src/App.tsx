@@ -7,6 +7,7 @@ import CreateAGroup from "./components/CreateAGroup/CreateAGroup";
 import { addGroup } from "./services/FinalProjectApiServices";
 import { Group } from "./models/IceBreaker";
 import GroupPage from "./components/GroupPage/GroupPage";
+import Header from "./components/Header/Header";
 
 function App() {
   function handleAddGroup(group: Group) {
@@ -15,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <Header /> */}
+        <Header />
         <Switch>
           <Route path="/" exact>
             <Homepage />
