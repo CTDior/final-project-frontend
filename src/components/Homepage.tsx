@@ -4,15 +4,11 @@ import { AuthContext } from "../context/AuthContext";
 import { signInWithGoogle, signOut } from "../firebaseConfig";
 import { Group } from "../models/IceBreaker";
 import { addGroup } from "../services/FinalProjectApiServices";
-import CreateAGroup from "./CreateAGroup";
+
 import "./Homepage.css";
 
 function Homepage() {
   const { user } = useContext(AuthContext);
-
-  function handleAddGroup(group: Group) {
-    addGroup(group);
-  }
 
   return (
     <div className="Homepage">
@@ -26,7 +22,9 @@ function Homepage() {
         </Button>
       </div>
       <div>
-        <CreateAGroup onSubmit={handleAddGroup} />
+        <Button href="/group/create" variant="outlined">
+          Create A Group
+        </Button>
       </div>
     </div>
   );
