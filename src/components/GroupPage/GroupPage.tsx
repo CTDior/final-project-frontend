@@ -23,7 +23,7 @@ const GroupPage = () => {
     });
   }, [id]);
 
-  return <div className="GroupPage">{group}</div>;
+  return <div className="GroupPage">Welcome to {group} Group Page</div>;
 };
 
 export default GroupPage;

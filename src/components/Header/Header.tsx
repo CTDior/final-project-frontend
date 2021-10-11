@@ -8,8 +8,15 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import { signInWithGoogle, signOut } from "../../firebaseConfig";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { ButtonBase, Drawer } from "@mui/material";
+import TemporaryDrawer from "./Drawer";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -26,7 +33,16 @@ const Header = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             App Name
           </Typography>
-          <Button color="inherit">Login</Button>
+          {user ? (
+            <div className="signed-in">
+              <p>Welcome {user.displayName}</p>
+              <ButtonBase onClick={signOut}>Sign Out</ButtonBase>
+            </div>
+          ) : (
+            <div className="signed-out">
+              <ButtonBase onClick={signInWithGoogle}>Login</ButtonBase>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
