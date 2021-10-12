@@ -16,8 +16,8 @@ const questions = [
   },
   {
     _id: "D",
-    text: "Would you rather be reincarnated as a cat or a dog?",
-    options: ["Cat", "Dog", "Neither"],
+    text: "Where would you prefer to live?",
+    options: ["City", "Suburb", "Rural area"],
   },
   {
     _id: "E",
