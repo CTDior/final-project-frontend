@@ -26,7 +26,7 @@ function Homepage() {
 
   useEffect(() => {
     loadGroups();
-  }, [loadGroups]);
+  }, []);
 
   function loadGroups() {
     fetchAllGroups().then((groupsFromApi) => {
