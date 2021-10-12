@@ -13,6 +13,8 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import AddIcon from "@mui/icons-material/Add";
+import GroupsIcon from "@mui/icons-material/Groups";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
@@ -33,14 +35,16 @@ export default function TemporaryDrawer() {
       </IconButton>
       <Drawer anchor={"left"} open={open} onClose={() => setOpen(false)}>
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          {["New Group", "Starred", "Send email", "Drafts"].map(
+            (text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {index % 4 === 0 ? <AddIcon /> : <GroupsIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            )
+          )}
         </List>
         <Divider />
         <List>
