@@ -8,8 +8,9 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router";
+import { AuthContext, AuthContextProvider } from "../../context/AuthContext";
 import { Group } from "../../models/IceBreaker";
 import { addGroup } from "../../services/FinalProjectApiServices";
 import "./CreateAGroup.css";
@@ -17,7 +18,7 @@ import "./CreateAGroup.css";
 function CreateAGroup() {
   const [name, setName] = useState("");
   const [question1, setQuestion1] = useState("");
-
+  const { user } = useContext(AuthContext);
   function handleAddGroup(group: Group) {
     addGroup(group).then((newGroup) => {
       goToGroupPage(newGroup._id!);
@@ -34,6 +35,8 @@ function CreateAGroup() {
     //gather data from state
     const group: Group = {
       name: name,
+      adminUid: user?.uid!,
+      profileQuestions: [question1],
     };
     handleAddGroup(group);
     setName("");
@@ -61,9 +64,7 @@ function CreateAGroup() {
           label="Age"
           onChange={(e) => setQuestion1(e.target.value)}
         >
-          <MenuItem value={"Do you fold your pizza?"}>
-            "Do you fold your pizza?"
-          </MenuItem>
+          <MenuItem value={"A"}>"Do you fold your pizza?"</MenuItem>
         </Select>
         <Button onClick={handleSubmit}>Create Group</Button>
       </FormControl>

@@ -1,3 +1,5 @@
+/** @format */
+
 export interface GroupMember {
   _id?: string;
   userUid: string;
@@ -11,6 +13,6 @@ export interface GroupMember {
 export interface Group {
   _id?: string;
   name: string;
-  adminUid?: string;
-  profileQuestions?: string;
+  adminUid: string;
+  profileQuestions: string[];
 }

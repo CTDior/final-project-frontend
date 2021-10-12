@@ -14,6 +14,8 @@ const GroupPage = () => {
   const [group, setGroup] = useState<Group>({
     _id: "",
     name: "",
+    adminUid: "",
+    profileQuestions: [],
   });
   const { id } = useParams<RouteParams>();
 
