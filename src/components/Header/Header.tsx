@@ -25,7 +25,7 @@ const Header = () => {
         <Toolbar>
           {user && <TemporaryDrawer />}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            App Name
+            <a href="/">App Name</a>
           </Typography>
           {user ? (
             <div className="signed-in">
