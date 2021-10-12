@@ -1,15 +1,24 @@
 /** @format */
 
+export interface Question {
+  _id?: string;
+  text: string;
+  options: string[];
+}
+
 export interface GroupMember {
   _id?: string;
   userUid: string;
   groupId: string;
-  groupName: Group;
+  groupName: string;
   memberName: string;
   birthday: string;
-  answers: string;
+  answers: Answer[];
 }
-
+interface Answer {
+  questionId: string;
+  answer: string;
+}
 export interface Group {
   _id?: string;
   name: string;

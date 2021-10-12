@@ -34,7 +34,7 @@ export default function TemporaryDrawer() {
         <MenuIcon />
       </IconButton>
       <Drawer anchor={"left"} open={open} onClose={() => setOpen(false)}>
-        <List>
+        {/* <List>
           {["New Group", "Starred", "Send email", "Drafts"].map(
             (text, index) => (
               <ListItem button key={text}>
@@ -56,6 +56,11 @@ export default function TemporaryDrawer() {
               <ListItemText primary={text} />
             </ListItem>
           ))}
+        </List> */}
+        <List>
+          <ListItem>
+            <ListItemText />
+          </ListItem>
         </List>
       </Drawer>
     </div>
