@@ -10,9 +10,6 @@ import GroupPage from "./components/GroupPage/GroupPage";
 import Header from "./components/Header/Header";
 
 function App() {
-  function handleAddGroup(group: Group) {
-    addGroup(group);
-  }
   return (
     <div className="App">
       <Router>
@@ -22,7 +19,7 @@ function App() {
             <Homepage />
           </Route>
           <Route path="/group/create" exact>
-            <CreateAGroup onSubmit={handleAddGroup} />
+            <CreateAGroup />
           </Route>
           <Route path="/group/:id">
             <GroupPage />

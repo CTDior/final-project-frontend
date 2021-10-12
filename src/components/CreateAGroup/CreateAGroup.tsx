@@ -9,16 +9,25 @@ import {
   Button,
 } from "@mui/material";
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import { Group } from "../../models/IceBreaker";
+import { addGroup } from "../../services/FinalProjectApiServices";
 import "./CreateAGroup.css";
 
-interface Props {
-  onSubmit: (group: Group) => void;
-}
-
-function CreateAGroup({ onSubmit }: Props) {
+function CreateAGroup() {
   const [name, setName] = useState("");
   const [question1, setQuestion1] = useState("");
+
+  function handleAddGroup(group: Group) {
+    addGroup(group).then((newGroup) => {
+      goToGroupPage(newGroup._id!);
+    });
+  }
+
+  const history = useHistory();
+  function goToGroupPage(groupID: string) {
+    history.push(`/group/${encodeURIComponent(groupID)}`);
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -26,7 +35,7 @@ function CreateAGroup({ onSubmit }: Props) {
     const group: Group = {
       name: name,
     };
-    onSubmit(group);
+    handleAddGroup(group);
     setName("");
   }
 

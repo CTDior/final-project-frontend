@@ -23,7 +23,6 @@ import "./Homepage.css";
 function Homepage() {
   const { user } = useContext(AuthContext);
   const [groups, setGroups] = useState<Group[]>([]);
-  const [groupID, setGroupID] = useState("");
 
   useEffect(() => {
     loadGroups();
@@ -36,7 +35,7 @@ function Homepage() {
   }
 
   const history = useHistory();
-  function handleChange() {
+  function handleChange(groupID: string) {
     history.push(`/group/${encodeURIComponent(groupID)}`);
   }
 
@@ -54,12 +53,12 @@ function Homepage() {
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             label="Select a Group"
-            value={groupID}
-            onChange={(e) => setGroupID(e.target.value)}
-            onClick={handleChange}
+            onChange={(e) => handleChange(e.target.value as string)}
           >
             {groups.map((group) => (
-              <MenuItem key={group._id}>{group.name}</MenuItem>
+              <MenuItem key={group._id} value={group._id}>
+                {group.name}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
