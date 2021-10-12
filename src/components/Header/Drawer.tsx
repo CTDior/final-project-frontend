@@ -15,11 +15,43 @@ import { IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddIcon from "@mui/icons-material/Add";
 import GroupsIcon from "@mui/icons-material/Groups";
+import { useHistory } from "react-router";
+import HomeIcon from "@mui/icons-material/Home";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
+
+  const history = useHistory();
+
+  const drawerItems = [
+    {
+      text: "Home",
+      icon: <HomeIcon color="secondary" />,
+      path: "/",
+    },
+    {
+      text: "New Group",
+      icon: <AddIcon color="secondary" />,
+      path: "/group/create",
+    },
+    {
+      text: "Sample1",
+      icon: <GroupsIcon color="secondary" />,
+      path: "/",
+    },
+    {
+      text: "Sample2",
+      icon: <GroupsIcon color="secondary" />,
+      path: "/",
+    },
+    {
+      text: "Sample3",
+      icon: <GroupsIcon color="secondary" />,
+      path: "/",
+    },
+  ];
 
   return (
     <div>
@@ -34,33 +66,18 @@ export default function TemporaryDrawer() {
         <MenuIcon />
       </IconButton>
       <Drawer anchor={"left"} open={open} onClose={() => setOpen(false)}>
-        {/* <List>
-          {["New Group", "Starred", "Send email", "Drafts"].map(
-            (text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 4 === 0 ? <AddIcon /> : <GroupsIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )}
-        </List>
-        <Divider />
+        {/* List Links */}
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+          {drawerItems.map((item) => (
+            <ListItem
+              button
+              key={item.text}
+              onClick={() => history.push(item.path)}
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText primary={item.text} />
             </ListItem>
           ))}
-        </List> */}
-        <List>
-          <ListItem>
-            <ListItemText />
-          </ListItem>
         </List>
       </Drawer>
     </div>
