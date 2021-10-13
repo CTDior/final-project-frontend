@@ -10,6 +10,8 @@ import {
 } from "../../services/FinalProjectApiServices";
 import GroupMembersAnswers from "../GroupMembersAnswers.tsx/GroupMembersAnswers";
 import ProfileForm from "../ProfileForm/ProfileForm";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
 import "./GroupPage.css";
 
 interface RouteParams {
@@ -25,6 +27,7 @@ const GroupPage = () => {
     profileQuestions: [],
   });
   const { id } = useParams<RouteParams>();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetchGroupById(id).then((response) => {
@@ -35,15 +38,29 @@ const GroupPage = () => {
     });
   }, [id]);
   console.log(groupMembers);
-  return (
-    <div className="GroupPage">
-      <p> Welcome to the {group.name} Group Page</p>
-      <GroupMembersAnswers />
 
+<<<<<<< HEAD
       <p>Please fill out this form to create your profile.</p>
       <ProfileForm group={group} />
     </div>
   );
+=======
+  if (user && group._id) {
+    return (
+      <div className="GroupPage">
+        <p> Welcome to the {group.name} Group Page</p>
+        <GroupMembersAnswers />{" "}
+      </div>
+    );
+  } else {
+    return (
+      <div className="GroupPage">
+        <p>Please fill out this form to create your profile.</p>
+        <ProfileForm />
+      </div>
+    );
+  }
+>>>>>>> 3099cee8466b7c62c2894fd605434b6a98cddbc8
 };
 
 export default GroupPage;
