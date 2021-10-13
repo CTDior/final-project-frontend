@@ -39,12 +39,6 @@ const GroupPage = () => {
   }, [id]);
   console.log(groupMembers);
 
-<<<<<<< HEAD
-      <p>Please fill out this form to create your profile.</p>
-      <ProfileForm group={group} />
-    </div>
-  );
-=======
   if (user && group._id) {
     return (
       <div className="GroupPage">
@@ -56,11 +50,10 @@ const GroupPage = () => {
     return (
       <div className="GroupPage">
         <p>Please fill out this form to create your profile.</p>
-        <ProfileForm />
+        <ProfileForm group={group} />
       </div>
     );
   }
->>>>>>> 3099cee8466b7c62c2894fd605434b6a98cddbc8
 };
 
 export default GroupPage;
