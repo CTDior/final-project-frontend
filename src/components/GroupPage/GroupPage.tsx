@@ -41,7 +41,7 @@ const GroupPage = () => {
       <GroupMembersAnswers />
 
       <p>Please fill out this form to create your profile.</p>
-      <ProfileForm />
+      <ProfileForm group={group} />
     </div>
   );
 };

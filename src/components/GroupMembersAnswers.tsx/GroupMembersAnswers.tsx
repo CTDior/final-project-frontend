@@ -24,7 +24,7 @@ function GroupMembersAnswers() {
   }, [id]);
   return (
     <div className="GroupMembersAnswers">
-      <div>{group.profileQuestions[0]}</div>
+      <div>{group.profileQuestions}</div>
     </div>
   );
 }

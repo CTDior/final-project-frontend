@@ -16,7 +16,7 @@ export interface GroupMember {
   favoriteColor: string;
   answers: Answer[];
 }
-interface Answer {
+export interface Answer {
   questionId: string;
   answer: string;
 }

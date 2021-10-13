@@ -1,4 +1,6 @@
-const questions = [
+import { Question } from "../models/IceBreaker";
+
+const questions: Question[] = [
   {
     _id: "A",
     text: "Do you fold your pizza?",
