@@ -8,8 +8,10 @@ if (!baseUrl) {
   console.error("Missing config: REACT_APP_FINALPROJECT_API_URL");
 }
 
-export function fetchAllGroupMembers(): Promise<GroupMember[]> {
-  return axios.get(`${baseUrl}/group-members`).then((res) => res.data);
+export function fetchAllGroupMembers(groupId: string): Promise<GroupMember[]> {
+  return axios
+    .get(`${baseUrl}/group-members`, { params: { groupId: groupId } })
+    .then((res) => res.data);
 }
 
 export function fetchAllGroups(): Promise<Group[]> {

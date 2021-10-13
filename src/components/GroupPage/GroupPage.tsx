@@ -1,9 +1,13 @@
 /** @format */
 
+import { responsiveFontSizes } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Group } from "../../models/IceBreaker";
-import { fetchGroupById } from "../../services/FinalProjectApiServices";
+import { Group, GroupMember } from "../../models/IceBreaker";
+import {
+  fetchAllGroupMembers,
+  fetchGroupById,
+} from "../../services/FinalProjectApiServices";
 import GroupMembersAnswers from "../GroupMembersAnswers.tsx/GroupMembersAnswers";
 import ProfileForm from "../ProfileForm/ProfileForm";
 import "./GroupPage.css";
@@ -13,6 +17,7 @@ interface RouteParams {
 }
 
 const GroupPage = () => {
+  const [groupMembers, setGroupMembers] = useState<GroupMember[]>([]);
   const [group, setGroup] = useState<Group>({
     _id: "",
     name: "",
@@ -25,8 +30,11 @@ const GroupPage = () => {
     fetchGroupById(id).then((response) => {
       setGroup(response);
     });
+    fetchAllGroupMembers(id).then((response) => {
+      setGroupMembers(response);
+    });
   }, [id]);
-
+  console.log(groupMembers);
   return (
     <div className="GroupPage">
       <p> Welcome to the {group.name} Group Page</p>
