@@ -18,10 +18,10 @@ export function fetchAllGroups(): Promise<Group[]> {
 
 export function fetchGroupById(_id: string): Promise<Group> {
   return axios
-    .get(`${baseUrl}/group`, {
-      params: {
-        _id: _id,
-      },
+    .get(`${baseUrl}/groups/${encodeURIComponent(_id)}`, {
+      // params: {
+      //   _id: _id,
+      // },
     })
     .then((response) => {
       return response.data;
