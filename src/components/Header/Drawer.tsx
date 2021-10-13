@@ -14,6 +14,9 @@ import { useHistory } from "react-router";
 import HomeIcon from "@mui/icons-material/Home";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
+import { auth, signOut } from "../../firebaseConfig";
+import VideogameAssetIcon from "@mui/icons-material/VideogameAsset";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
@@ -48,6 +51,11 @@ export default function TemporaryDrawer() {
       text: "New Group",
       icon: <AddIcon color="secondary" />,
       path: "/group/create",
+    },
+    {
+      text: "Live Activity",
+      icon: <VideogameAssetIcon color="secondary" />,
+      path: "/",
     },
     // {
     //   text: "My Profile",
@@ -92,6 +100,13 @@ export default function TemporaryDrawer() {
                 <ListItemText primary={item.text} />
               </ListItem>
             ))}
+
+            <ListItem button onClick={signOut}>
+              <ListItemIcon>
+                <LogoutIcon color="secondary" />
+              </ListItemIcon>
+              <ListItemText>Logout</ListItemText>
+            </ListItem>
           </List>
         </div>
       </Drawer>

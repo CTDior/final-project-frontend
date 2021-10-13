@@ -10,9 +10,19 @@ import GroupPage from "./components/GroupPage/GroupPage";
 import Header from "./components/Header/Header";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
+import { auth } from "./firebaseConfig";
+import { Button } from "@mui/material";
 
 function App() {
   const { user } = useContext(AuthContext);
+  const authProvider = new GoogleAuthProvider();
+  const signInWithGoogle = (): void => {
+    signInWithPopup(auth, authProvider);
+  };
+  const signOut = (): void => {
+    auth.signOut();
+  };
 
   return (
     <div className="App">
@@ -32,7 +42,14 @@ function App() {
           </Switch>
         ) : (
           <div className="login">
-            <p>Please Login To Continue</p>
+            {/* <button>Please Login To Continue</button> */}
+            <Button
+              sx={{ margin: 2 }}
+              onClick={signInWithGoogle}
+              variant="contained"
+            >
+              Login To Continue
+            </Button>
           </div>
         )}
       </Router>

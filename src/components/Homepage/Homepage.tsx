@@ -42,7 +42,7 @@ function Homepage() {
   return (
     <div className="Homepage">
       <div className="createGroup">
-        <Button href="/group/create" variant="outlined">
+        <Button sx={{ m: 2 }} href="/group/create" variant="outlined">
           Create A Group
         </Button>
       </div>
