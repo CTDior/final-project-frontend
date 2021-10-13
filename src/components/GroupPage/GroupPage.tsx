@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Group } from "../../models/IceBreaker";
 import { fetchGroupById } from "../../services/FinalProjectApiServices";
+import GroupMembersAnswers from "../GroupMembersAnswers.tsx/GroupMembersAnswers";
 import "./GroupPage.css";
 
 interface RouteParams {
@@ -26,7 +27,10 @@ const GroupPage = () => {
   }, [id]);
 
   return (
-    <div className="GroupPage">Welcome to the {group.name} Group Page</div>
+    <div className="GroupPage">
+      <p> Welcome to the {group.name} Group Page</p>
+      <GroupMembersAnswers />
+    </div>
   );
 };
 
