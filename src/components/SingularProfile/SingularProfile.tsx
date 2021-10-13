@@ -21,7 +21,11 @@ const SingularProfile = ({ groupMember }: Props) => {
           {groupMember.favoriteColor}
         </Typography>
         <Typography variant="body2">
-          {groupMember.answers.map((eachAnswer) => eachAnswer.answer)}
+          {groupMember.answers.map(
+            (eachAnswer) =>
+              //grab question ids from each answer and find each id of question and where it matches in order to display
+              eachAnswer.answer
+          )}
           <br />
         </Typography>
       </Card>
