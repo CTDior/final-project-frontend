@@ -8,7 +8,7 @@ import {
   fetchAllGroupMembers,
   fetchGroupById,
 } from "../../services/FinalProjectApiServices";
-import GroupMembersAnswers from "../GroupMembersAnswers.tsx/GroupMembersAnswers";
+import MemberProfilesList from "../MemberProfilesList/MemberProfilesList";
 import ProfileForm from "../ProfileForm/ProfileForm";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
@@ -39,21 +39,23 @@ const GroupPage = () => {
   }, [id]);
   console.log(groupMembers);
 
-  if (user && group._id) {
-    return (
-      <div className="GroupPage">
-        <p> Welcome to the {group.name} Group Page</p>
-        <GroupMembersAnswers />{" "}
-      </div>
-    );
-  } else {
-    return (
-      <div className="GroupPage">
-        <p>Please fill out this form to create your profile.</p>
-        <ProfileForm group={group} />
-      </div>
-    );
-  }
+  // if (user && group._id) {
+  return (
+    <div className="GroupPage">
+      <p> Welcome to the {group.name} Group Page</p>
+      <MemberProfilesList groupMembers={groupMembers} />{" "}
+      <ProfileForm group={group} />
+    </div>
+
+    // } else {
+    // return (
+    // <div className="GroupPage">
+    //   <p>Please fill out this form to create your profile.</p>
+
+    // </div>
+  );
+  // ););
+  // }
 };
 
 export default GroupPage;

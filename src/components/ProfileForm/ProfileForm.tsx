@@ -46,8 +46,7 @@ const ProfileForm = ({ group }: Props) => {
   }
 
   function handleAnswer(answer: string) {
-    // Call setAnswer
-
+    setAnswer(currentQuestionIndex, answer);
     if (currentQuestionIndex === answers.length - 1) {
       handleSave();
     } else {
