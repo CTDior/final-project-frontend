@@ -13,6 +13,7 @@ export interface GroupMember {
   groupName: string;
   memberName: string;
   birthday: string;
+  favoriteColor: string;
   answers: Answer[];
 }
 interface Answer {
