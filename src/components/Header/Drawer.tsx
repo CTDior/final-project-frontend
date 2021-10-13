@@ -1,29 +1,42 @@
 /** @format */
-
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddIcon from "@mui/icons-material/Add";
 import GroupsIcon from "@mui/icons-material/Groups";
 import { useHistory } from "react-router";
 import HomeIcon from "@mui/icons-material/Home";
+import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
 export default function TemporaryDrawer() {
-  const [open, setOpen] = React.useState(false);
+  const [state, setState] = React.useState(false);
 
   const history = useHistory();
+
+  // const toggleDrawer = (open) => (event) => {
+  //   setState(open);
+  // };
+
+  const closeOnSelection = (event: React.KeyboardEvent | React.MouseEvent) => {
+    if (
+      event.type === "keydown" &&
+      ((event as React.KeyboardEvent).key === "Tab" ||
+        (event as React.KeyboardEvent).key === "Shift")
+    ) {
+      return;
+    }
+
+    setState(false);
+  };
 
   const drawerItems = [
     {
@@ -36,21 +49,21 @@ export default function TemporaryDrawer() {
       icon: <AddIcon color="secondary" />,
       path: "/group/create",
     },
-    {
-      text: "Sample1",
-      icon: <GroupsIcon color="secondary" />,
-      path: "/",
-    },
-    {
-      text: "Sample2",
-      icon: <GroupsIcon color="secondary" />,
-      path: "/",
-    },
-    {
-      text: "Sample3",
-      icon: <GroupsIcon color="secondary" />,
-      path: "/",
-    },
+    // {
+    //   text: "My Profile",
+    //   icon: <EmojiPeopleIcon color="secondary" />,
+    //   path: "/", // need to figure out how to link id
+    // },
+    // {
+    //   text: "All Groups",
+    //   icon: <GroupsIcon color="secondary" />,
+    //   path: "/",
+    // },
+    // {
+    //   text: "Logout",
+    //   icon: <LogoutIcon color="secondary" />,
+    //   path: "/",
+    // },
   ];
 
   return (
@@ -61,24 +74,26 @@ export default function TemporaryDrawer() {
         color="inherit"
         aria-label="menu"
         sx={{ mr: 2 }}
-        onClick={() => setOpen(true)}
+        onClick={() => setState(true)}
       >
         <MenuIcon />
       </IconButton>
-      <Drawer anchor={"left"} open={open} onClose={() => setOpen(false)}>
-        {/* List Links */}
-        <List>
-          {drawerItems.map((item) => (
-            <ListItem
-              button
-              key={item.text}
-              onClick={() => history.push(item.path)}
-            >
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItem>
-          ))}
-        </List>
+      <Drawer anchor={"left"} open={state} onClose={() => setState(false)}>
+        <div onClick={closeOnSelection} onKeyDown={closeOnSelection}>
+          {/* List Links */}
+          <List>
+            {drawerItems.map((item) => (
+              <ListItem
+                button
+                key={item.text}
+                onClick={() => history.push(item.path)}
+              >
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItem>
+            ))}
+          </List>
+        </div>
       </Drawer>
     </div>
   );
