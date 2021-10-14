@@ -101,7 +101,7 @@ const ProfileForm = ({ group, onComplete }: Props) => {
             autoFocus
             margin="dense"
             id="ProfileForm__birthday"
-            label="Birthday (month/day)"
+            label="Birthday (ex: January-1)"
             type="text"
             fullWidth
             variant="standard"

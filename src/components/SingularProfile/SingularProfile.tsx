@@ -25,14 +25,19 @@ const SingularProfile = ({ groupMember }: Props) => {
 
   return (
     <div className="SingularProfile">
-      <Card variant="outlined">
-        <Typography variant="h5" color="text.secondary" gutterBottom>
+      <Card className="profileCard" variant="outlined">
+        <Typography
+          textAlign="center"
+          variant="h5"
+          color="text.secondary"
+          gutterBottom
+        >
           {groupMember.memberName}
         </Typography>
-        <Typography sx={{ fontSize: 14 }} component="div">
+        <Typography textAlign="center" sx={{ fontSize: 14 }} component="div">
           {groupMember.birthday}
         </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+        <Typography textAlign="center" sx={{ mb: 1.5 }} color="text.secondary">
           {groupMember.favoriteColor}
         </Typography>
         <ol>

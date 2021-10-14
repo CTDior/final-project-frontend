@@ -1,3 +1,9 @@
+.selectGroupButton {
+  display: flex;
+  justify-content: center;
+}
+
 .createGroup {
-  margin-left: 10px;
+  display: flex;
+  justify-content: center;
 }

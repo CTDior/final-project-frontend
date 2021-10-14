@@ -1,0 +1,16 @@
+.SingularProfile {
+  display: flex;
+  margin-left: 20px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.profileCard {
+  width: 225px;
+
+  text-align: left;
+}
+
+ol {
+  text-align: left;
+}

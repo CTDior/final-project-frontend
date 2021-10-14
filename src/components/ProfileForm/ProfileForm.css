@@ -1,0 +1,5 @@
+.ProfileForm {
+  border: 2px solid gray;
+  display: flex;
+  margin: 15px;
+}

@@ -42,11 +42,16 @@ function Homepage() {
   return (
     <div className="Homepage">
       <div className="createGroup">
-        <Button sx={{ m: 2 }} href="/group/create" variant="outlined">
+        <Button
+          className="createGroupButton"
+          sx={{ m: 2 }}
+          href="/group/create"
+          variant="outlined"
+        >
           Create A Group
         </Button>
       </div>
-      <div>
+      <div className="selectGroupButton">
         <FormControl sx={{ m: 2, minWidth: 150 }}>
           <InputLabel id="groupName">Select a Group</InputLabel>
           <Select
