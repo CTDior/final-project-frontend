@@ -39,6 +39,13 @@ const SingularProfile = ({ groupMember }: Props) => {
           {questionsTextAndAnswers.map(
             (eachQA) =>
               //grab question ids from each answer and find each id of question and where it matches in order to display
+              eachQA.question.text
+          )}
+        </Typography>
+        <Typography>
+          {questionsTextAndAnswers.map(
+            (eachQA) =>
+              //grab question ids from each answer and find each id of question and where it matches in order to display
               eachQA.answer
           )}
         </Typography>
