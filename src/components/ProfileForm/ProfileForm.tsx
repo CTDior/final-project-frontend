@@ -28,6 +28,13 @@ const ProfileForm = ({ group, onComplete }: Props) => {
     );
   }, [group]);
 
+  useEffect(() => {
+    if (currentQuestionIndex === answers.length) {
+      goToNextQuestion();
+      handleSave();
+    }
+  }, [currentQuestionIndex, answers]);
+
   const { user } = useContext(AuthContext);
   function handleAddGroupMember(groupMember: GroupMember) {
     addGroupMember(groupMember).then(onComplete);
@@ -48,11 +55,11 @@ const ProfileForm = ({ group, onComplete }: Props) => {
 
   function handleAnswer(answer: string) {
     setAnswer(currentQuestionIndex, answer);
-    if (currentQuestionIndex === answers.length - 1) {
-      handleSave();
-    } else {
-      goToNextQuestion();
-    }
+    // if (currentQuestionIndex === answers.length - 1) {
+    //   handleSave();
+    // } else {
+    goToNextQuestion();
+    // }
   }
 
   function goToNextQuestion() {
@@ -116,6 +123,8 @@ const ProfileForm = ({ group, onComplete }: Props) => {
           {/* <Button onClick={handleSubmit}>Create Your Profile!</Button> */}
           <Button type="submit">Continue to Profile Questions</Button>
         </form>
+      ) : currentQuestionIndex >= answers.length ? (
+        <div>Saving...</div>
       ) : (
         <ProfileQuestion
           questionId={answers[currentQuestionIndex].questionId}
