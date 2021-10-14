@@ -18,6 +18,7 @@ function GroupMembersAnswers({ groupMembers }: Props) {
   useEffect(() => {
     fetchGroupById(id).then((response) => {});
   }, [id]);
+
   return (
     <div className="GroupMembersAnswers">
       <div>
