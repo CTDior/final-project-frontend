@@ -14,6 +14,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 import "./GroupPage.css";
 import questions from "../../questions/questions";
+import MemberMatchAndSort from "../MemberMatchAndSort/MemberMatchAndSort";
 
 interface RouteParams {
   id: string;
@@ -71,6 +72,7 @@ const GroupPage = () => {
           ))}
         </ol>
         <MemberProfilesList groupMembers={groupMembers} />{" "}
+        <MemberMatchAndSort groupMembers={groupMembers} />
       </div>
     );
   } else {
