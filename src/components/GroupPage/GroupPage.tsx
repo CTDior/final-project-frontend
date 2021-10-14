@@ -78,7 +78,9 @@ const GroupPage = () => {
   } else {
     return (
       <div className="GroupPage">
-        <p>Please fill out this form to create your profile.</p>
+        <p className="pleaseFillOutForm">
+          Please fill out this form to create your profile.
+        </p>
         <ProfileForm group={group} onComplete={loadGroup} />
       </div>
     );

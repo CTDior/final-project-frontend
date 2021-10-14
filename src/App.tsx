@@ -26,6 +26,7 @@ function App() {
     <div className="App">
       <Router>
         <Header />
+        <h2>Break the Ice By Warming Up to Others!</h2>
         {user ? (
           <Switch>
             <Route path="/" exact>
@@ -47,7 +48,7 @@ function App() {
               variant="contained"
               className="login"
             >
-              Login To Continue
+              Log In To Continue
             </Button>
           </div>
         )}
