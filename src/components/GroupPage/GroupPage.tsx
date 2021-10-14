@@ -30,15 +30,17 @@ const GroupPage = () => {
   const { id } = useParams<RouteParams>();
   const { user } = useContext(AuthContext);
 
-  useEffect(() => {
+  useEffect(loadGroup, [id]);
+  console.log(group);
+
+  function loadGroup() {
     fetchGroupById(id).then((response) => {
       setGroup(response);
     });
     fetchAllGroupMembers(id).then((response) => {
       setGroupMembers(response);
     });
-  }, [id]);
-  console.log(group);
+  }
 
   // getting the text of the questions to display at top of page
   // const memberAnswers = groupMember.answers;
@@ -52,28 +54,29 @@ const GroupPage = () => {
   });
   console.log(questionIdAndText);
 
-  // if (user && group._id) {
-  return (
-    <div className="GroupPage">
-      <p> Welcome to the {group.name} Group Page</p>
-      <ol>
-        {questionIdAndText.map((eachQuestion) => (
-          <li>{eachQuestion.question.text}</li>
-        ))}
-      </ol>
-      <MemberProfilesList groupMembers={groupMembers} />{" "}
-      <ProfileForm group={group} />
-    </div>
-
-    // } else {
-    // return (
-    // <div className="GroupPage">
-    //   <p>Please fill out this form to create your profile.</p>
-
-    // </div>
-  );
-  // ););
-  // }
+  if (user && group._id) {
+    return (
+      <div className="GroupPage">
+        <p>
+          {" "}
+          Welcome to the <b>{group.name}</b> Group Page
+        </p>
+        <ol>
+          {questionIdAndText.map((eachQuestion) => (
+            <li>{eachQuestion.question.text}</li>
+          ))}
+        </ol>
+        <MemberProfilesList groupMembers={groupMembers} />{" "}
+      </div>
+    );
+  } else {
+    return (
+      <div className="GroupPage">
+        <p>Please fill out this form to create your profile.</p>
+        <ProfileForm group={group} onComplete={loadGroup} />
+      </div>
+    );
+  }
 };
 
 export default GroupPage;

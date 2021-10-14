@@ -10,9 +10,10 @@ import ProfileQuestion from "./ProfileQuestion";
 
 interface Props {
   group: Group;
+  onComplete: () => void;
 }
 
-const ProfileForm = ({ group }: Props) => {
+const ProfileForm = ({ group, onComplete }: Props) => {
   const [memberName, setMemberName] = useState("");
   const [birthday, setBirthday] = useState("");
   const [favoriteColor, setFavoriteColor] = useState("");
@@ -29,7 +30,7 @@ const ProfileForm = ({ group }: Props) => {
 
   const { user } = useContext(AuthContext);
   function handleAddGroupMember(groupMember: GroupMember) {
-    addGroupMember(groupMember);
+    addGroupMember(groupMember).then(onComplete);
   }
 
   async function handleSave() {
