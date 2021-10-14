@@ -52,11 +52,11 @@ export default function TemporaryDrawer() {
       icon: <AddIcon color="secondary" />,
       path: "/group/create",
     },
-    {
-      text: "Live Activity",
-      icon: <VideogameAssetIcon color="secondary" />,
-      path: "/",
-    },
+    // {
+    //   text: "Live Activity",
+    //   icon: <VideogameAssetIcon color="secondary" />,
+    //   path: "/",
+    // },
     // {
     //   text: "My Profile",
     //   icon: <EmojiPeopleIcon color="secondary" />,
