@@ -55,7 +55,7 @@ const GroupPage = () => {
   console.log(questionIdAndText);
 
   const isUserInGroup = groupMembers.some((groupMember) => {
-    groupMember.groupId;
+    return groupMember.userUid === user?.uid;
   });
 
   if (isUserInGroup && group._id) {
