@@ -1,3 +1,5 @@
+/** @format */
+
 import { GroupMember } from "../../models/IceBreaker";
 import "./SingularProfile.css";
 import questions from "../../questions/questions";

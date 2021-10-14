@@ -1,8 +1,11 @@
+/** @format */
+
 .SingularProfile {
   display: flex;
   margin-left: 20px;
   justify-content: center;
   margin-bottom: 10px;
+  flex-direction: column;
 }
 
 .profileCard {
@@ -13,4 +16,12 @@
 
 ol {
   text-align: left;
+}
+
+@media only screen and (min-width: 568px) {
+  .Si {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }

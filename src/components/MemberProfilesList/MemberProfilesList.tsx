@@ -1,3 +1,5 @@
+/** @format */
+
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Group, GroupMember } from "../../models/IceBreaker";
@@ -21,11 +23,9 @@ function GroupMembersAnswers({ groupMembers }: Props) {
 
   return (
     <div className="GroupMembersAnswers">
-      <div>
-        {groupMembers.map((eachMember) => (
-          <SingularProfile key={eachMember.userUid} groupMember={eachMember} />
-        ))}
-      </div>
+      {groupMembers.map((eachMember) => (
+        <SingularProfile key={eachMember.userUid} groupMember={eachMember} />
+      ))}
     </div>
   );
 }
