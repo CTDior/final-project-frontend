@@ -1,1 +1,6 @@
 /** @format */
+.GroupPage__QuestionList {
+  position: sticky;
+  background: white;
+  top: 0px;
+}

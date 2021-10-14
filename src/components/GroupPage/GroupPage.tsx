@@ -61,7 +61,7 @@ const GroupPage = () => {
           {" "}
           Welcome to the <b>{group.name}</b> Group Page
         </p>
-        <ol>
+        <ol className="GroupPage__QuestionList">
           {questionIdAndText.map((eachQuestion) => (
             <li>{eachQuestion.question.text}</li>
           ))}
