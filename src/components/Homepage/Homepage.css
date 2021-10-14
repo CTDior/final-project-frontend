@@ -1,4 +1,7 @@
+/** @format */
+
 .selectGroupButton {
+  color: #2196f3;
   display: flex;
   justify-content: center;
 }

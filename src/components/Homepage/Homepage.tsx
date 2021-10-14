@@ -53,12 +53,16 @@ function Homepage() {
       </div>
       <div className="selectGroupButton">
         <FormControl sx={{ m: 2, minWidth: 150 }}>
-          <InputLabel id="groupName">Select a Group</InputLabel>
+          <InputLabel sx={{ color: "primary.main" }} id="groupName">
+            Select a Group
+          </InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             label="Select a Group"
+            color="primary"
             onChange={(e) => handleChange(e.target.value as string)}
+            sx={{ color: "primary.main" }}
           >
             {groups.map((group) => (
               <MenuItem key={group._id} value={group._id}>

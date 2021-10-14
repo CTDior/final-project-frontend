@@ -1,0 +1,8 @@
+/** @format */
+
+.ProfileQuestion {
+  display: flexbox;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}

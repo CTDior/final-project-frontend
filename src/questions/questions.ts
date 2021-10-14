@@ -1,10 +1,12 @@
+/** @format */
+
 import { Question } from "../models/IceBreaker";
 
 const questions: Question[] = [
   {
     _id: "A",
-    text: "Do you fold your pizza?",
-    options: ["Yes", "No", "Sometimes"],
+    text: "How do you eat Pizza?",
+    options: ["Like a normal human", "Crust First", "Folded", "Hand me a Fork"],
   },
   {
     _id: "B",
@@ -29,7 +31,7 @@ const questions: Question[] = [
   {
     _id: "F",
     text: "What is your favorite part of working from home?",
-    options: ["No Commute", "Pajama Pants", "I'd rather be in the office"],
+    options: ["No Commute", "Pajama Pants", "I'd rather be in office"],
   },
   {
     _id: "G",

@@ -1,7 +1,9 @@
+/** @format */
+
 import "./ProfileQuestion.css";
 import questions from "../../questions/questions";
 import { Question } from "../../models/IceBreaker";
-import { Button } from "@mui/material";
+import { Box, Button, ButtonGroup } from "@mui/material";
 
 interface Props {
   questionId: string;
@@ -20,13 +22,26 @@ function ProfileQuestion({ questionId, onAnswer }: Props) {
       {question.text}
       {question.options.map((option) => {
         return (
-          <Button
-            onClick={() => onAnswer(option)}
-            variant="outlined"
-            key={option}
+          <Box
+            sx={{
+              display: "flex-box",
+              flexDirection: "column",
+              alignItems: "center",
+              "& > *": {
+                m: 1,
+              },
+            }}
           >
-            {option}
-          </Button>
+            <ButtonGroup size="large" orientation="vertical">
+              <Button
+                onClick={() => onAnswer(option)}
+                variant="outlined"
+                key={option}
+              >
+                {option}
+              </Button>
+            </ButtonGroup>
+          </Box>
         );
       })}
     </div>
