@@ -91,6 +91,21 @@ const questions: Question[] = [
     text: "Would it be better to start work five years later or end five years earlier?",
     options: ["Start Later", "End Earlier", "Neither", "Something else"],
   },
+  {
+    _id: "Q",
+    text: "Would you rather...",
+    options: ["Grow your hair into a mullet", "Shave your head"],
+  },
+  {
+    _id: "R",
+    text: "Would you rather...",
+    options: ["Shut the club down", "Take sunrise yoga class"],
+  },
+  {
+    _id: "S",
+    text: "Would you rather...",
+    options: ["Read the book", "Watch the movie"],
+  },
 ];
 
 export default questions;
