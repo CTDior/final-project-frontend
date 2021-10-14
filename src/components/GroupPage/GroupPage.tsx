@@ -54,7 +54,11 @@ const GroupPage = () => {
   });
   console.log(questionIdAndText);
 
-  if (user && group._id) {
+  const isUserInGroup = groupMembers.some((groupMember) => {
+    groupMember.groupId;
+  });
+
+  if (isUserInGroup && group._id) {
     return (
       <div className="GroupPage">
         <p>
