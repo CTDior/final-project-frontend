@@ -7,6 +7,7 @@ import { Card, containerClasses, Typography } from "@mui/material";
 import { group } from "console";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import CheckIcon from "@mui/icons-material/Check";
 
 interface Props {
   groupMember: GroupMember;
@@ -28,15 +29,23 @@ const SingularProfile = ({ groupMember, currentUserInGroup }: Props) => {
 
   // const memberAnswers = groupMember.answers;
   // console.log(memberAnswers);
-  const questionsTextAndAnswers = groupMember.answers.map((item) => {
+  const commonAnswers: boolean[] = [];
+  const questionsTextAndAnswers = groupMember.answers.map((item, index) => {
     const container: any = {};
     container.question = questions.find(
       (eachQuestion) => eachQuestion._id === item.questionId
     );
     container.answer = item.answer;
+    container.match = false;
+
+    if (container.answer === currentUserInGroup.answers[index].answer) {
+      container.match = true;
+    }
     return container;
   });
+  console.log(commonAnswers);
   console.log(questionsTextAndAnswers);
+  console.log(currentUserInGroup.answers[0].answer);
 
   return (
     <div className="SingularProfile">
@@ -58,7 +67,9 @@ const SingularProfile = ({ groupMember, currentUserInGroup }: Props) => {
         <ol>
           {questionsTextAndAnswers.map((eachQA) => (
             //grab question ids from each answer and find each id of question and where it matches in order to display
-            <li>{eachQA.answer}</li>
+            <li>
+              {eachQA.answer} {eachQA.match && <CheckIcon />}
+            </li>
           ))}
         </ol>
         {/* <Typography variant="body2">
