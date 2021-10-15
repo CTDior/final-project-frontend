@@ -22,13 +22,30 @@ const GroupAnswers = ({ groupMembers, group }: Props) => {
     return options.question.options;
   });
 
-  const answerCount = answerArray.map((item) => {
-    const container: any = {};
-    container.item = item;
-    container.count = 0;
-    return container;
+  console.log(questionArray);
+  console.log(answerArray);
+  // const answerCount = answerArray.map((item) => {
+  //   const container: any = {};
+  //   container.item = item;
+  //   container.count = 0;
+  //   return container;
+  // });
+  // console.log(answerCount);
+
+  const groupMemberAnswers = groupMembers.map((eachMember) => {
+    return eachMember.answers;
   });
-  console.log(answerCount);
+  console.log(groupMemberAnswers);
+
+  const countArray = answerArray.map((eachAnswer) => {
+    let counter = 0;
+    if (groupMemberAnswers.includes(eachAnswer)) {
+      counter++;
+    }
+    return { name: eachAnswer, count: counter };
+  });
+  console.log(countArray);
+
   return (
     <div className="GroupAnswers">
       {group.profileQuestions}
