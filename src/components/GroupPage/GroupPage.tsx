@@ -66,7 +66,7 @@ const GroupPage = () => {
       <div className="GroupPage">
         <p>
           {" "}
-          Welcome to the <b>{group.name}</b> Group Page
+          Welcome to <b>{group.name}</b>!
         </p>
         <ol className="GroupPage__QuestionList">
           {questionIdAndText.map((eachQuestion) => (

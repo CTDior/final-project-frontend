@@ -49,6 +49,7 @@ function CreateAGroup() {
 
   return (
     <div className="CreateAGroup">
+      <h2>Create a Group for Your Team</h2>
       <FormControl>
         <TextField
           required

@@ -26,7 +26,7 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <h2>Break the Ice By Warming Up to Others!</h2>
+        {/* <h3>Break the Ice By Warming Up to Others!</h3> */}
         {user ? (
           <Switch>
             <Route path="/" exact>

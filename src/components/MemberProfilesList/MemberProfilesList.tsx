@@ -1,5 +1,5 @@
 /** @format */
-
+import "./MemberProfilesList.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Group, GroupMember } from "../../models/IceBreaker";

@@ -10,6 +10,7 @@ import {
 import { group } from "console";
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { signInWithGoogle, signOut } from "../../firebaseConfig";
 import { Group } from "../../models/IceBreaker";
@@ -41,15 +42,18 @@ function Homepage() {
 
   return (
     <div className="Homepage">
+      <h3>Break the Ice By Warming Up to Others!</h3>
+
       <div className="createGroup">
-        <Button
-          className="createGroupButton"
-          sx={{ m: 2 }}
-          href="/group/create"
-          variant="outlined"
-        >
-          Create A Group
-        </Button>
+        <Link to="/group/create">
+          <Button
+            className="createGroupButton"
+            sx={{ m: 2 }}
+            variant="outlined"
+          >
+            Create A Group
+          </Button>
+        </Link>
       </div>
       <div className="selectGroupButton">
         <FormControl sx={{ m: 2, minWidth: 150 }}>

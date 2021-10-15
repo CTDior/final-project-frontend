@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { ButtonBase, Drawer } from "@mui/material";
 import TemporaryDrawer from "./Drawer";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { user } = useContext(AuthContext);
@@ -19,7 +20,7 @@ const Header = () => {
         <Toolbar>
           {user && <TemporaryDrawer />}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <a href="/">Ice Ice Breaker</a>
+            <Link to="/">Ice Ice Breaker</Link>
           </Typography>
           {user ? (
             <div className="signed-in">
