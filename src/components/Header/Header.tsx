@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import { signInWithGoogle, signOut } from "../../firebaseConfig";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { ButtonBase, Drawer } from "@mui/material";
+import { Avatar, ButtonBase, Drawer, Stack } from "@mui/material";
 import TemporaryDrawer from "./Drawer";
 import { Link } from "react-router-dom";
 
@@ -24,7 +24,13 @@ const Header = () => {
           </Typography>
           {user ? (
             <div className="signed-in">
-              <p>Welcome {user.displayName}</p>
+              <Stack direction="row" spacing={2}>
+                <p>
+                  {/* {user.displayName} */}
+                  {user.photoURL && <img src={user.photoURL} alt="" />}
+                </p>
+                {/* <Avatar alt="" src="" sx={{ width: 24, height: 24 }} /> */}
+              </Stack>
             </div>
           ) : (
             <div className="signed-out"></div>

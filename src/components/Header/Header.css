@@ -1,6 +1,23 @@
 /** @format */
 
+.signed_in {
+  justify-content: space-evenly;
+}
+
 a {
   text-decoration: none;
   color: white;
+}
+
+p {
+  text-align: center;
+  vertical-align: middle;
+}
+
+img {
+  border-radius: 50%;
+  height: 35px;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
 }
