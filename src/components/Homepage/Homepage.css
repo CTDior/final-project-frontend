@@ -1,12 +1,12 @@
 /** @format */
-.button {
-  margin: 50px;
+
+.selectGroupButton {
+  color: #2196f3;
   display: flex;
   justify-content: center;
 }
 
-h2 {
-  color: #2196f3;
+.createGroup {
   display: flex;
   justify-content: center;
 }

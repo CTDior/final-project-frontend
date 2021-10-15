@@ -1,0 +1,7 @@
+/** @format */
+
+.ProfileForm {
+  /* border: 2px solid gray; */
+  display: flexbox;
+  margin: 15px;
+}
