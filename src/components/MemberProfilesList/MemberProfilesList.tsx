@@ -12,9 +12,10 @@ interface RouteParams {
 }
 interface Props {
   groupMembers: GroupMember[];
+  currentUserInGroup: GroupMember;
 }
 
-function GroupMembersAnswers({ groupMembers }: Props) {
+function MemberProfilesList({ groupMembers, currentUserInGroup }: Props) {
   const { id } = useParams<RouteParams>();
 
   useEffect(() => {
@@ -22,12 +23,16 @@ function GroupMembersAnswers({ groupMembers }: Props) {
   }, [id]);
 
   return (
-    <div className="GroupMembersAnswers">
+    <div className="MemberProfilesList">
       {groupMembers.map((eachMember) => (
-        <SingularProfile key={eachMember.userUid} groupMember={eachMember} />
+        <SingularProfile
+          key={eachMember.userUid}
+          groupMember={eachMember}
+          currentUserInGroup={currentUserInGroup}
+        />
       ))}
     </div>
   );
 }
 
-export default GroupMembersAnswers;
+export default MemberProfilesList;

@@ -5,13 +5,26 @@ import "./SingularProfile.css";
 import questions from "../../questions/questions";
 import { Card, containerClasses, Typography } from "@mui/material";
 import { group } from "console";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 interface Props {
   groupMember: GroupMember;
+  currentUserInGroup: GroupMember;
 }
 
-const SingularProfile = ({ groupMember }: Props) => {
+const SingularProfile = ({ groupMember, currentUserInGroup }: Props) => {
   console.log(groupMember);
+
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  console.log(currentUserInGroup);
+
+  // we need a variable for the the current user's questions and ansers,
+
+  // we have two arrays with the same length, and now we can compare which
+  // answers are the same.
+  // If an answer is the same, we can add it to a new array of boolean values.
 
   // const memberAnswers = groupMember.answers;
   // console.log(memberAnswers);

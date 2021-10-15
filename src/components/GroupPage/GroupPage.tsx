@@ -55,11 +55,13 @@ const GroupPage = () => {
   });
   console.log(questionIdAndText);
 
-  const isUserInGroup = groupMembers.some((groupMember) => {
-    return groupMember.userUid === user?.uid;
-  });
+  const currentUserInGroup: GroupMember | undefined = groupMembers.find(
+    (groupMember) => {
+      return user?.uid === groupMember.userUid;
+    }
+  );
 
-  if (isUserInGroup && group._id) {
+  if (currentUserInGroup && group._id) {
     return (
       <div className="GroupPage">
         <p>
@@ -71,7 +73,10 @@ const GroupPage = () => {
             <li>{eachQuestion.question.text}</li>
           ))}
         </ol>
-        <MemberProfilesList groupMembers={groupMembers} />{" "}
+        <MemberProfilesList
+          groupMembers={groupMembers}
+          currentUserInGroup={currentUserInGroup}
+        />{" "}
         <MemberMatchAndSort groupMembers={groupMembers} />
       </div>
     );
