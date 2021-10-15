@@ -14,7 +14,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 import "./GroupPage.css";
 import questions from "../../questions/questions";
-import MemberMatchAndSort from "../MemberMatchAndSort/MemberMatchAndSort";
+
+import GroupAnswers from "../GroupAnswers/GroupAnswers";
 
 interface RouteParams {
   id: string;
@@ -32,7 +33,6 @@ const GroupPage = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(loadGroup, [id]);
-  console.log(group);
 
   function loadGroup() {
     fetchGroupById(id).then((response) => {
@@ -53,7 +53,6 @@ const GroupPage = () => {
     );
     return container;
   });
-  console.log(questionIdAndText);
 
   const currentUserInGroup: GroupMember | undefined = groupMembers.find(
     (groupMember) => {
@@ -70,14 +69,16 @@ const GroupPage = () => {
         </p>
         <ol className="GroupPage__QuestionList">
           {questionIdAndText.map((eachQuestion) => (
-            <li>{eachQuestion.question.text}</li>
+            <li key={eachQuestion.question._id}>
+              {eachQuestion.question.text}
+            </li>
           ))}
         </ol>
         <MemberProfilesList
           groupMembers={groupMembers}
           currentUserInGroup={currentUserInGroup}
         />{" "}
-        <MemberMatchAndSort groupMembers={groupMembers} />
+        <GroupAnswers groupMembers={groupMembers} group={group} />
       </div>
     );
   } else {

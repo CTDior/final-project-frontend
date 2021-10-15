@@ -15,11 +15,7 @@ interface Props {
 }
 
 const SingularProfile = ({ groupMember, currentUserInGroup }: Props) => {
-  console.log(groupMember);
-
   const { user } = useContext(AuthContext);
-  console.log(user);
-  console.log(currentUserInGroup);
 
   // we need a variable for the the current user's questions and ansers,
 
@@ -43,9 +39,6 @@ const SingularProfile = ({ groupMember, currentUserInGroup }: Props) => {
     }
     return container;
   });
-  console.log(commonAnswers);
-  console.log(questionsTextAndAnswers);
-  console.log(currentUserInGroup.answers[0].answer);
 
   return (
     <div className="SingularProfile">
@@ -67,7 +60,7 @@ const SingularProfile = ({ groupMember, currentUserInGroup }: Props) => {
         <ol>
           {questionsTextAndAnswers.map((eachQA) => (
             //grab question ids from each answer and find each id of question and where it matches in order to display
-            <li>
+            <li key={eachQA.question._id}>
               {eachQA.answer} {eachQA.match && <CheckIcon />}
             </li>
           ))}
