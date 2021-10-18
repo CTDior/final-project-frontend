@@ -13,25 +13,26 @@ import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { signInWithGoogle, signOut } from "../../firebaseConfig";
-import { Group } from "../../models/IceBreaker";
+import { Group, GroupMember } from "../../models/IceBreaker";
 import {
   addGroup,
   fetchAllGroups,
+  fetchAllGroupsByUser,
 } from "../../services/FinalProjectApiServices";
 
 import "./Homepage.css";
 
 function Homepage() {
   const { user } = useContext(AuthContext);
-  const [groups, setGroups] = useState<Group[]>([]);
+  const [member, setMember] = useState<GroupMember[]>([]);
 
   useEffect(() => {
     loadGroups();
   }, []);
 
   function loadGroups() {
-    fetchAllGroups().then((groupsFromApi) => {
-      setGroups(groupsFromApi);
+    fetchAllGroupsByUser(user?.uid!).then((memberFromApi) => {
+      setMember(memberFromApi);
     });
   }
 
@@ -68,9 +69,9 @@ function Homepage() {
             onChange={(e) => handleChange(e.target.value as string)}
             sx={{ color: "primary.main" }}
           >
-            {groups.map((group) => (
-              <MenuItem key={group._id} value={group._id}>
-                {group.name}
+            {member.map((group) => (
+              <MenuItem key={group.groupId} value={group.groupId}>
+                {group.groupName}
               </MenuItem>
             ))}
           </Select>

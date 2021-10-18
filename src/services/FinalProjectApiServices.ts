@@ -14,6 +14,12 @@ export function fetchAllGroupMembers(groupId: string): Promise<GroupMember[]> {
     .then((res) => res.data);
 }
 
+export function fetchAllGroupsByUser(userUid: string): Promise<GroupMember[]> {
+  return axios
+    .get(`${baseUrl}/group-members`, { params: { userUid: userUid } })
+    .then((res) => res.data);
+}
+
 export function fetchAllGroups(): Promise<Group[]> {
   return axios.get(`${baseUrl}/groups`).then((res) => res.data);
 }

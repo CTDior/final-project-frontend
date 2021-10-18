@@ -55,7 +55,7 @@ const SingularQuestion = ({ groupMembers, questionId }: Props) => {
     <Card className="SingularQuestion" variant="outlined">
       {question.text}
       {countArray.map((eachAnswer) => (
-        <ul style={{ listStyle: "none" }}>
+        <ul key={eachAnswer.name} style={{ listStyle: "none" }}>
           <li>
             {eachAnswer.name}:{" "}
             {((eachAnswer.count / groupMembers.length) * 100).toFixed(1)}%
