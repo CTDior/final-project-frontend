@@ -10,3 +10,10 @@
   display: flex;
   justify-content: center;
 }
+@media only screen and (min-width: 568px) {
+  .Si {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
