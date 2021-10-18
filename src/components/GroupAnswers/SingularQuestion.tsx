@@ -1,3 +1,5 @@
+/** @format */
+
 import { Group, GroupMember, Question } from "../../models/IceBreaker";
 import questions from "../../questions/questions";
 import "./SingularQuestion.css";
@@ -34,7 +36,11 @@ const SingularQuestion = ({ groupMembers, questionId }: Props) => {
   return (
     <div className="SingularQuestion">
       {question.text}
-      {countArray.map((eachAnswer) => eachAnswer.name)}
+      {countArray.map((eachAnswer) => (
+        <li>
+          {eachAnswer.name} - {eachAnswer.count}
+        </li>
+      ))}
     </div>
   );
 };
