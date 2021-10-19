@@ -26,5 +26,5 @@ export interface Group {
   name: string;
   adminUid: string;
   profileQuestions: string[];
-  liveQuestionId?: string | null;
+  liveQuestionId: string | null;
 }

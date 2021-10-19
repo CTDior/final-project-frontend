@@ -6,12 +6,19 @@ import {
   Select,
   TextField,
 } from "@mui/material";
+import { group } from "console";
 import { useState } from "react";
 import { Group, Question } from "../../models/IceBreaker";
 import questions from "../../questions/questions";
+import { updateGroup } from "../../services/FinalProjectApiServices";
 import "./Admin.css";
 
-function Admin() {
+interface Props {
+  group: Group;
+  onUpdate: () => void;
+}
+
+function Admin({ group, onUpdate }: Props) {
   // This is to copy the URL (on the group page) to share with groupmembers.
   const [copied, setCopied] = useState(false);
   function copy() {
@@ -25,46 +32,45 @@ function Admin() {
   }
 
   // This is to select a live question from the question list
-  const [liveQuestion, setLiveQuestion] = useState("");
+  const [liveQuestionId, setLiveQuestionId] = useState<string>("");
 
   // Function to add live question ID to group
   // We need a new service and endpoint
-  // function handleAddGroup(group: Group) {
-  //   addGroup(group).then((newGroup) => {
-  //     goToGroupPage(newGroup._id!);
-  //   });
-  // }
+  function handleAddLiveQuestion(selectedLiveQuestionId: string) {
+    const updatedGroup: Group = {
+      ...group,
+      liveQuestionId: selectedLiveQuestionId,
+    };
+    updateGroup(updatedGroup).then(onUpdate);
+  }
 
-  // async function handleSubmit(e: React.FormEvent) {
-  //   e.preventDefault();
-  //   //gather data from state
-  //   const group: Group = {
-  //     name: name,
-  //     adminUid: user?.uid!,
-  //     liveQuestionId: liveQuestionId;
-  //   };
-  //   handleAddGroup(group);
-  //   setName("");
-  // }
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    //gather data from state
+    handleAddLiveQuestion(liveQuestionId);
+  }
 
   return (
     <div className="Admin">
       <div>
+        <p>
+          Share this link with anyone you would like to invite to the group.
+        </p>
         <Button variant="outlined" onClick={copy}>
           {!copied ? "Copy link to share with group" : "Copied!"}
         </Button>
       </div>
       <div className="CreateAGroup">
-        <h2>Create a Group for Your Team</h2>
+        <h2>Select a Live Question</h2>
         <FormControl>
-          <InputLabel id="demo-simple-select-label"></InputLabel>
+          <InputLabel id="Live Question">Live Question</InputLabel>
           <Select
             required
             labelId="questions"
             id="Live Question"
-            value={liveQuestion}
+            value={liveQuestionId}
             label="Live Question"
-            onChange={(e) => setLiveQuestion(e.target.value)}
+            onChange={(e) => setLiveQuestionId(e.target.value)}
           >
             {questions.map((question) => (
               <MenuItem key={question._id} value={question._id}>
@@ -73,7 +79,7 @@ function Admin() {
             ))}
           </Select>
 
-          {/* <Button onClick={handleSubmit}>Create Group</Button> */}
+          <Button onClick={handleSubmit}>Set Live Question</Button>
         </FormControl>
       </div>
     </div>

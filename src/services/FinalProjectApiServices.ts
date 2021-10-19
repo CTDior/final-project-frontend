@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "axios";
-import { Group, GroupMember } from "../models/IceBreaker";
+import { Group, GroupMember, Question } from "../models/IceBreaker";
 
 const baseUrl: string = process.env.REACT_APP_FINALPROJECT_API_URL || "";
 if (!baseUrl) {
@@ -42,4 +42,16 @@ export function addGroupMember(member: GroupMember): Promise<GroupMember> {
 
 export function addGroup(group: Group): Promise<Group> {
   return axios.post(`${baseUrl}/groups`, group).then((res) => res.data);
+}
+
+export function updateGroup(group: Group): Promise<Group> {
+  return axios
+    .put(`${baseUrl}/groups/${encodeURIComponent(group._id!)}`, group)
+    .then((res) => res.data);
+}
+
+export function updateGroupMember(member: GroupMember): Promise<GroupMember> {
+  return axios
+    .put(`${baseUrl}/group-members/${encodeURIComponent(member._id!)}`, member)
+    .then((res) => res.data);
 }

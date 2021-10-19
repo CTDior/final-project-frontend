@@ -62,6 +62,7 @@ const GroupPage = () => {
     name: "",
     adminUid: "",
     profileQuestions: [],
+    liveQuestionId: null,
   });
   const { id } = useParams<RouteParams>();
   const { user } = useContext(AuthContext);
@@ -135,7 +136,7 @@ const GroupPage = () => {
             <GroupAnswers groupMembers={groupMembers} group={group} />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <Admin />
+            <Admin group={group} onUpdate={loadGroup} />
             {/* <Admin  groupMembers={groupMembers} group={group} /> */}
           </TabPanel>
         </Box>{" "}

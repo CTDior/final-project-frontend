@@ -42,6 +42,7 @@ function CreateAGroup() {
       name: name,
       adminUid: user?.uid!,
       profileQuestions: [question1, question2, question3, question4, question5],
+      liveQuestionId: null,
     };
     handleAddGroup(group);
     setName("");
