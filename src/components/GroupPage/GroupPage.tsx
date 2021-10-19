@@ -17,6 +17,7 @@ import questions from "../../questions/questions";
 
 import GroupAnswers from "../GroupAnswers/GroupAnswers";
 import React from "react";
+import Admin from "../Admin/Admin";
 
 interface RouteParams {
   id: string;
@@ -121,6 +122,7 @@ const GroupPage = () => {
             >
               <Tab label="Members" {...a11yProps(0)} />
               <Tab label="Answers" {...a11yProps(1)} />
+              <Tab label="Admin" {...a11yProps(2)} />
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
@@ -131,6 +133,10 @@ const GroupPage = () => {
           </TabPanel>
           <TabPanel value={value} index={1}>
             <GroupAnswers groupMembers={groupMembers} group={group} />
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            <Admin />
+            {/* <Admin  groupMembers={groupMembers} group={group} /> */}
           </TabPanel>
         </Box>{" "}
       </div>
