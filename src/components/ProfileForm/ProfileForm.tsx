@@ -51,6 +51,7 @@ const ProfileForm = ({ group, onComplete }: Props) => {
       birthday: birthday,
       favoriteColor: favoriteColor,
       answers: answers,
+      liveQuestionAnswer: null,
     };
     handleAddGroupMember(groupMember);
   }

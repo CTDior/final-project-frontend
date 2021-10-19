@@ -6,7 +6,7 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddIcon from "@mui/icons-material/Add";
 import GroupsIcon from "@mui/icons-material/Groups";
@@ -17,9 +17,17 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
 import { auth, signOut } from "../../firebaseConfig";
 import VideogameAssetIcon from "@mui/icons-material/VideogameAsset";
+import {
+  Link as RouterLink,
+  LinkProps as RouterLinkProps,
+  MemoryRouter as Router,
+} from "react-router-dom";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
+const LinkBehavior = React.forwardRef<any, Omit<RouterLinkProps, "to">>(
+  (props, ref) => <RouterLink ref={ref} to="/" {...props} role={undefined} />
+);
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState(false);
 
@@ -101,12 +109,24 @@ export default function TemporaryDrawer() {
               </ListItem>
             ))}
 
+            <ListItem button component={RouterLink} to="/groups/:id">
+              <ListItemIcon>
+                <VideogameAssetIcon color="secondary" />
+              </ListItemIcon>
+              <ListItemText>Live Activity</ListItemText>
+            </ListItem>
+
             <ListItem button onClick={signOut}>
               <ListItemIcon>
                 <LogoutIcon color="secondary" />
               </ListItemIcon>
               <ListItemText>Logout</ListItemText>
             </ListItem>
+            {/* <Router>
+              <ListItem button component={RouterLink} to="/groups/:id">
+                Hello
+              </ListItem>
+            </Router> */}
           </List>
         </div>
       </Drawer>
