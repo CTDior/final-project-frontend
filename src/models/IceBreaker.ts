@@ -15,6 +15,7 @@ export interface GroupMember {
   birthday: string;
   favoriteColor: string;
   answers: Answer[];
+  liveQuestionAnswer: Answer | null;
 }
 export interface Answer {
   questionId: string;
@@ -25,4 +26,5 @@ export interface Group {
   name: string;
   adminUid: string;
   profileQuestions: string[];
+  liveQuestionId?: string | null;
 }
