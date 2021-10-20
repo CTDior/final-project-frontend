@@ -81,7 +81,7 @@ const questions: Question[] = [
   {
     _id: "M",
     text: "There is a free, round-trip shuttle to Mars. The catch: it will take one year of your life to go, visit, and come back. Are you in?",
-    options: ["Yes", "No", "Space doesn't exitst"],
+    options: ["Yes", "No", "Space doesn't exist"],
   },
   {
     _id: "N",

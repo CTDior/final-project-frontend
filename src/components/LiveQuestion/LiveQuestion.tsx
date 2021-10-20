@@ -1,10 +1,12 @@
+/** @format */
+
 import { Answer, Group, GroupMember } from "../../models/IceBreaker";
 import "./LiveQuestion.css";
-import questions from "../../questions/questions";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import ProfileQuestion from "../ProfileForm/ProfileQuestion";
 import { updateGroupMember } from "../../services/FinalProjectApiServices";
+import SingularQuestion from "../GroupAnswers/SingularQuestion";
 
 interface Props {
   group: Group;
@@ -41,6 +43,12 @@ function LiveQuestion({ group, groupMembers, onUpdate }: Props) {
 
   return (
     <div className="LiveQuestion">
+      {}
+      <SingularQuestion
+        groupMembers={groupMembers}
+        questionId={group.liveQuestionId!}
+        isLiveQuestion={true}
+      />
       <ProfileQuestion
         questionId={group.liveQuestionId!}
         onAnswer={handleLiveAnswer}

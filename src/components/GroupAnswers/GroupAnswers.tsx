@@ -16,6 +16,7 @@ const GroupAnswers = ({ groupMembers, group }: Props) => {
           key={questionId}
           groupMembers={groupMembers}
           questionId={questionId}
+          isLiveQuestion={false}
         />
       ))}
     </div>
