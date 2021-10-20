@@ -38,6 +38,7 @@ const ProfileForm = ({ group, onComplete }: Props) => {
   }, [currentQuestionIndex, answers]);
 
   const { user } = useContext(AuthContext);
+
   function handleAddGroupMember(groupMember: GroupMember) {
     addGroupMember(groupMember).then(onComplete);
   }
