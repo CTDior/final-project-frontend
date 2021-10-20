@@ -1,9 +1,8 @@
 /** @format */
 import "./MemberProfilesList.css";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Group, GroupMember } from "../../models/IceBreaker";
-import questions from "../../questions/questions";
+import { GroupMember } from "../../models/IceBreaker";
 import { fetchGroupById } from "../../services/FinalProjectApiServices";
 import SingularProfile from "../SingularProfile/SingularProfile";
 

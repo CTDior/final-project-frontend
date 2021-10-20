@@ -7,18 +7,13 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
-import { group } from "console";
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { signInWithGoogle, signOut } from "../../firebaseConfig";
-import { Group, GroupMember } from "../../models/IceBreaker";
-import {
-  addGroup,
-  fetchAllGroups,
-  fetchAllGroupsByUser,
-} from "../../services/FinalProjectApiServices";
+// import { signInWithGoogle, signOut } from "../../firebaseConfig";
+import { GroupMember } from "../../models/IceBreaker";
+import { fetchAllGroupsByUser } from "../../services/FinalProjectApiServices";
 
 import "./Homepage.css";
 
@@ -28,7 +23,7 @@ function Homepage() {
 
   useEffect(() => {
     loadGroups();
-  }, []);
+  });
 
   function loadGroups() {
     fetchAllGroupsByUser(user?.uid!).then((memberFromApi) => {

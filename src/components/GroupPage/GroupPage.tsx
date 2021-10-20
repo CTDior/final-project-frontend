@@ -1,6 +1,6 @@
 /** @format */
 
-import { Box, responsiveFontSizes, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Group, GroupMember } from "../../models/IceBreaker";

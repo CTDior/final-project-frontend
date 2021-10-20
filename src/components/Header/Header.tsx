@@ -4,10 +4,10 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { signInWithGoogle, signOut } from "../../firebaseConfig";
+// import { signInWithGoogle, signOut } from "../../firebaseConfig";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { Avatar, ButtonBase, Drawer, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import TemporaryDrawer from "./Drawer";
 import { Link } from "react-router-dom";
 

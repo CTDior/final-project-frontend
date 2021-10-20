@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router";
-import { AuthContext, AuthContextProvider } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import { Group } from "../../models/IceBreaker";
 import questions from "../../questions/questions";
 import { addGroup } from "../../services/FinalProjectApiServices";

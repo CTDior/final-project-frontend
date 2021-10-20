@@ -1,7 +1,7 @@
 /** @format */
 
 import { Card } from "@mui/material";
-import { Group, GroupMember, Question } from "../../models/IceBreaker";
+import { GroupMember, Question } from "../../models/IceBreaker";
 import questions from "../../questions/questions";
 import "./SingularQuestion.css";
 
@@ -18,7 +18,6 @@ const SingularQuestion = ({ groupMembers, questionId }: Props) => {
     return <div>Error: No such question Id.</div>;
   }
 
-  let answerBarWidth;
   const countArray = question.options.map((eachAnswer) => {
     let counter = 0;
 

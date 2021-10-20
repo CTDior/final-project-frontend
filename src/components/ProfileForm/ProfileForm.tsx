@@ -1,13 +1,11 @@
 /** @format */
 
-import { Button, FormControl, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { FormEvent, useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { Answer, Group, GroupMember } from "../../models/IceBreaker";
 import { addGroupMember } from "../../services/FinalProjectApiServices";
 import "./ProfileForm.css";
-import questions from "../../questions/questions";
 import ProfileQuestion from "./ProfileQuestion";
 
 interface Props {
@@ -33,8 +31,9 @@ const ProfileForm = ({ group, onComplete }: Props) => {
   useEffect(() => {
     if (currentQuestionIndex === answers.length) {
       goToNextQuestion();
+      // eslint-disable-next-line
       handleSave();
-    }
+    } // eslint-disable-next-line
   }, [currentQuestionIndex, answers]);
 
   const { user } = useContext(AuthContext);

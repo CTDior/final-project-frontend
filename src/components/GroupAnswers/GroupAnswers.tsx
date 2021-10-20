@@ -1,5 +1,4 @@
 /** @format */
-import questions from "../../questions/questions";
 import { Group, GroupMember } from "../../models/IceBreaker";
 import "./GroupAnswers.css";
 import SingularQuestion from "./SingularQuestion";

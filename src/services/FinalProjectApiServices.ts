@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "axios";
-import { Group, GroupMember, Question } from "../models/IceBreaker";
+import { Group, GroupMember } from "../models/IceBreaker";
 
 const baseUrl: string = process.env.REACT_APP_FINALPROJECT_API_URL || "";
 if (!baseUrl) {

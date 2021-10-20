@@ -3,10 +3,7 @@
 import { GroupMember } from "../../models/IceBreaker";
 import "./SingularProfile.css";
 import questions from "../../questions/questions";
-import { Card, containerClasses, Typography } from "@mui/material";
-import { group } from "console";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { Card, Typography } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 
 interface Props {
@@ -15,8 +12,6 @@ interface Props {
 }
 
 const SingularProfile = ({ groupMember, currentUserInGroup }: Props) => {
-  const { user } = useContext(AuthContext);
-
   // we need a variable for the the current user's questions and ansers,
 
   // we have two arrays with the same length, and now we can compare which
@@ -25,7 +20,7 @@ const SingularProfile = ({ groupMember, currentUserInGroup }: Props) => {
 
   // const memberAnswers = groupMember.answers;
   // console.log(memberAnswers);
-  const commonAnswers: boolean[] = [];
+  // const commonAnswers: boolean[] = [];
   const questionsTextAndAnswers = groupMember.answers.map((item, index) => {
     const container: any = {};
     container.question = questions.find(
