@@ -18,6 +18,7 @@ import questions from "../../questions/questions";
 import GroupAnswers from "../GroupAnswers/GroupAnswers";
 import React from "react";
 import Admin from "../Admin/Admin";
+import LiveQuestion from "../LiveQuestion/LiveQuestion";
 
 interface RouteParams {
   id: string;
@@ -95,10 +96,20 @@ const GroupPage = () => {
     }
   );
 
+  // Check if the current user is the group admin,
+  // if so, display the Admin tab
   let isAdmin = false;
   if (group.adminUid === user?.uid) {
     isAdmin = true;
   }
+
+  // Check if the group live question id is null,
+  // if so, do not show live tab
+  let isLiveQuestion = false;
+  if (group.liveQuestionId !== null) {
+    isLiveQuestion = true;
+  }
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -128,7 +139,10 @@ const GroupPage = () => {
             >
               <Tab label="Members" {...a11yProps(0)} />
               <Tab label="Answers" {...a11yProps(1)} />
-              {isAdmin && <Tab label="Admin" {...a11yProps(2)} />}
+              {isLiveQuestion && (
+                <Tab label="Live Question" {...a11yProps(2)} />
+              )}
+              {isAdmin && <Tab label="Admin" {...a11yProps(3)} />}
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
@@ -141,6 +155,9 @@ const GroupPage = () => {
             <GroupAnswers groupMembers={groupMembers} group={group} />
           </TabPanel>
           <TabPanel value={value} index={2}>
+            <LiveQuestion />
+          </TabPanel>
+          <TabPanel value={value} index={3}>
             <Admin group={group} onUpdate={loadGroup} />
             {/* <Admin  groupMembers={groupMembers} group={group} /> */}
           </TabPanel>
