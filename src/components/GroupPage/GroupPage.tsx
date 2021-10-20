@@ -94,6 +94,11 @@ const GroupPage = () => {
       return user?.uid === groupMember.userUid;
     }
   );
+
+  let isAdmin = false;
+  if (group.adminUid === user?.uid) {
+    isAdmin = true;
+  }
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -123,7 +128,7 @@ const GroupPage = () => {
             >
               <Tab label="Members" {...a11yProps(0)} />
               <Tab label="Answers" {...a11yProps(1)} />
-              <Tab label="Admin" {...a11yProps(2)} />
+              {isAdmin && <Tab label="Admin" {...a11yProps(2)} />}
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
