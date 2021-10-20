@@ -155,7 +155,11 @@ const GroupPage = () => {
             <GroupAnswers groupMembers={groupMembers} group={group} />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            <LiveQuestion group={group} groupMembers={groupMembers} />
+            <LiveQuestion
+              group={group}
+              groupMembers={groupMembers}
+              onUpdate={loadGroup}
+            />
           </TabPanel>
           <TabPanel value={value} index={3}>
             <Admin group={group} onUpdate={loadGroup} />
