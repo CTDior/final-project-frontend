@@ -14,7 +14,7 @@ function LiveQuestion({ group, groupMembers }: Props) {
   const { user } = useContext(AuthContext);
 
   //handle answer submit function
-  function handleAnswer(answerText: string) {
+  function handleLiveAnswer(answerText: string) {
     //create answer object by taking answer text and current group liveQuestionId to build Answer object.
     //member being updated is member associated with current user. find() user group number.
     // copy and update group member with new liveQuestionAnswer. See Admin.tsx line 40
@@ -25,7 +25,7 @@ function LiveQuestion({ group, groupMembers }: Props) {
     <div className="LiveQuestion">
       <ProfileQuestion
         questionId={group.liveQuestionId!}
-        onAnswer={handleAnswer}
+        onAnswer={handleLiveAnswer}
       />
     </div>
   );
