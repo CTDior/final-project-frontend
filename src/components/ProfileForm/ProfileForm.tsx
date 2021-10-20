@@ -104,13 +104,27 @@ const ProfileForm = ({ group, onComplete }: Props) => {
             autoFocus
             margin="dense"
             id="ProfileForm__birthday"
-            label="Birthday (ex: January-1)"
+            label="Birthday (MM/DD)"
             type="text"
             fullWidth
             variant="standard"
             value={birthday}
             onChange={(e) => setBirthday(e.target.value)}
           ></TextField>
+          {/* <TextField
+            required
+            autoFocus
+            margin="dense"
+            id="date"
+            label="Birthday"
+            type="date"
+            defaultValue="11-14-1997"
+            sx={{ width: 220 }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={(e) => setBirthday(e.target.value)}
+          /> */}
           <TextField
             required
             autoFocus
