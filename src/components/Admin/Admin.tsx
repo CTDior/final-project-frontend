@@ -61,7 +61,7 @@ function Admin({ group, onUpdate }: Props) {
         </Button>
       </div>
       <div className="CreateAGroup">
-        <h2>Let's Do It Live!</h2>
+        <h2>And We're Live!</h2>
         <p>Select a new question for your group to answer RIGHT NOW</p>
         <FormControl>
           <InputLabel id="Live Question">Live Question</InputLabel>
