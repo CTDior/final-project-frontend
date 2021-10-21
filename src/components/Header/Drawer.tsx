@@ -16,8 +16,6 @@ import HomeIcon from "@mui/icons-material/Home";
 import LogoutIcon from "@mui/icons-material/Logout";
 // import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
 import { signOut } from "../../firebaseConfig";
-import VideogameAssetIcon from "@mui/icons-material/VideogameAsset";
-import { Link as RouterLink } from "react-router-dom";
 
 // const LinkBehavior = React.forwardRef<any, Omit<RouterLinkProps, "to">>(
 //   (props, ref) => <RouterLink ref={ref} to="/" {...props} role={undefined} />

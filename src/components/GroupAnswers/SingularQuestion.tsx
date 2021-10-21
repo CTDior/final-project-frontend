@@ -25,7 +25,7 @@ const SingularQuestion = ({
   let answerCount = 0;
   const countArray = question.options.map((eachAnswer) => {
     let counter = 0;
-
+    const memberNames: string[] = [];
     for (const groupMember of groupMembers) {
       if (isLiveQuestion) {
         if (
@@ -33,6 +33,7 @@ const SingularQuestion = ({
           groupMember.liveQuestionAnswer.questionId === question._id
         ) {
           counter++;
+          memberNames.push(groupMember.memberName);
           answerCount++;
         }
       } else {
@@ -42,6 +43,7 @@ const SingularQuestion = ({
             groupMemberAnswer.questionId === question._id
           ) {
             counter++;
+            memberNames.push(groupMember.memberName);
             answerCount++;
           }
         }
@@ -51,9 +53,7 @@ const SingularQuestion = ({
     return {
       name: eachAnswer,
       count: counter,
-      answerBarWidth: Number(
-        ((counter / groupMembers.length) * 100).toFixed(1)
-      ),
+      memberNames: memberNames,
     };
   });
 
@@ -79,15 +79,16 @@ const SingularQuestion = ({
         <ul key={eachAnswer.name} style={{ listStyle: "none" }}>
           <li>
             {eachAnswer.name}: {calcPercentage(eachAnswer.count)}%
+            <div
+              className="eachAnswerStyles"
+              style={{
+                backgroundColor: "#2196F3",
+                height: "20px",
+                width: calcPercentage(eachAnswer.count) + "%",
+              }}
+            ></div>
+            <p>{eachAnswer.memberNames.join(", ")}</p>
           </li>
-          <div
-            className="eachAnswerStyles"
-            style={{
-              backgroundColor: "#2196F3",
-              height: "20px",
-              width: calcPercentage(eachAnswer.count) + "%",
-            }}
-          ></div>
         </ul>
       ))}
     </Card>

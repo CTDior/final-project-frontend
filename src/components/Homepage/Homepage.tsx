@@ -22,9 +22,7 @@ function Homepage() {
   const { user } = useContext(AuthContext);
   const [member, setMember] = useState<GroupMember[]>([]);
 
-  useEffect(() => {
-    loadGroups();
-  }, []);
+  useEffect(loadGroups, [user]);
 
   function loadGroups() {
     fetchAllGroupsByUser(user?.uid!).then((memberFromApi) => {

@@ -19,7 +19,6 @@ import GroupAnswers from "../GroupAnswers/GroupAnswers";
 import React from "react";
 import Admin from "../Admin/Admin";
 import LiveQuestion from "../LiveQuestion/LiveQuestion";
-import { bgcolor } from "@mui/system";
 
 interface RouteParams {
   id: string;

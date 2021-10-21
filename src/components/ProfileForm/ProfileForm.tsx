@@ -3,7 +3,7 @@
 import { Button, TextField } from "@mui/material";
 import { FormEvent, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { Answer, Group, GroupMember } from "../../models/IceBreaker";
+import { Group, GroupMember } from "../../models/IceBreaker";
 import { addGroupMember } from "../../services/FinalProjectApiServices";
 import "./ProfileForm.css";
 import ProfileQuestion from "./ProfileQuestion";
