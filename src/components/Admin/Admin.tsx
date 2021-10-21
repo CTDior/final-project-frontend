@@ -79,10 +79,16 @@ function Admin({ group, onUpdate }: Props) {
             ))}
           </Select>
 
-          <Button onClick={handleSubmit}>Set Live Question</Button>
+          <Button
+            className="setLiveQuestionButton"
+            variant="outlined"
+            onClick={handleSubmit}
+          >
+            Set Live Question
+          </Button>
         </FormControl>
         <p>
-          <Button onClick={() => handleAddLiveQuestion("")}>
+          <Button variant="outlined" onClick={() => handleAddLiveQuestion("")}>
             Cancel Live Question
           </Button>
         </p>
