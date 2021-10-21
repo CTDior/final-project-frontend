@@ -36,10 +36,10 @@ function Admin({ group, onUpdate }: Props) {
 
   // Function to add live question ID to group
   // We need a new service and endpoint
-  function handleAddLiveQuestion(selectedLiveQuestionId: string) {
+  function handleAddLiveQuestion(selectedLiveQuestionId: string | null) {
     const updatedGroup: Group = {
       ...group,
-      liveQuestionId: selectedLiveQuestionId,
+      liveQuestionId: selectedLiveQuestionId || null,
     };
     updateGroup(updatedGroup).then(onUpdate);
   }
@@ -81,6 +81,11 @@ function Admin({ group, onUpdate }: Props) {
 
           <Button onClick={handleSubmit}>Set Live Question</Button>
         </FormControl>
+        <p>
+          <Button onClick={() => handleAddLiveQuestion("")}>
+            Cancel Live Question
+          </Button>
+        </p>
       </div>
     </div>
   );

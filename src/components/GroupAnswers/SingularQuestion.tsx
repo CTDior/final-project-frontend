@@ -64,7 +64,6 @@ const SingularQuestion = ({
   //   height: 20 + "px",
   //   backgroundColor: "#fc5a8d",
   // };
-  console.log(countArray);
 
   function calcPercentage(count: number) {
     if (answerCount === 0) {

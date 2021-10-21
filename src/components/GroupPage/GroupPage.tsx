@@ -158,9 +158,7 @@ const GroupPage = () => {
               <Tab label="Members" value={0} {...a11yProps(0)} />
               <Tab label="Answers" value={1} {...a11yProps(1)} />
               {isLiveQuestion && (
-                <div>
-                  <Tab label="Live Question" value={2} {...a11yProps(2)} />
-                </div>
+                <Tab label="Live Question" value={2} {...a11yProps(2)} />
               )}
               {isAdmin && <Tab label="Admin" value={3} {...a11yProps(3)} />}
             </Tabs>
