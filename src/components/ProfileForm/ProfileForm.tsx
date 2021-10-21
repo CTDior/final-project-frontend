@@ -97,6 +97,7 @@ const ProfileForm = ({ group, onComplete }: Props) => {
             fullWidth
             variant="standard"
             value={memberName}
+            placeholder={`${user!.displayName}`}
             onChange={(e) => setMemberName(e.target.value)}
           ></TextField>
           <TextField
