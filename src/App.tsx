@@ -34,13 +34,14 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Paper>
+        <Paper style={{ height: "100vh" }}>
           <Router>
             <Header />
             <MuiSwitch
               checked={darkMode}
               onChange={() => setDarkMode(!darkMode)}
-            />
+            />{" "}
+            Color Mode
             {/* <h3>Break the Ice By Warming Up to Others!</h3> */}
             {user ? (
               <Switch>
