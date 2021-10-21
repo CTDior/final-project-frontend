@@ -65,6 +65,7 @@ function Homepage() {
               color="primary"
               onChange={(e) => handleChange(e.target.value as string)}
               sx={{ color: "primary.main" }}
+              defaultValue=""
             >
               {member.map((group) => (
                 <MenuItem key={group.groupId} value={group.groupId}>

@@ -151,18 +151,6 @@ const GroupPage = () => {
           {" "}
           Welcome to <b>{group.name}</b>!
         </p>
-        <Box
-          className="GroupPage__QuestionList"
-          sx={{ bgcolor: "background.paper" }}
-        >
-          <ol>
-            {questionIdAndText.map((eachQuestion) => (
-              <li key={eachQuestion.question._id}>
-                {eachQuestion.question.text}
-              </li>
-            ))}
-          </ol>
-        </Box>
         <Box sx={{ width: "100%" }}>
           <Box
             className="hello"
@@ -182,13 +170,18 @@ const GroupPage = () => {
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
-            <ol className="GroupPage__QuestionList">
-              {questionIdAndText.map((eachQuestion) => (
-                <li key={eachQuestion.question._id}>
-                  {eachQuestion.question.text}
-                </li>
-              ))}
-            </ol>
+            <Box
+              className="GroupPage__QuestionList"
+              sx={{ bgcolor: "background.paper" }}
+            >
+              <ol>
+                {questionIdAndText.map((eachQuestion) => (
+                  <li key={eachQuestion.question._id}>
+                    {eachQuestion.question.text}
+                  </li>
+                ))}
+              </ol>
+            </Box>
             <MemberProfilesList
               groupMembers={groupMembers}
               currentUserInGroup={currentUserInGroup}
