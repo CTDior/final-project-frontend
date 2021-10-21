@@ -145,13 +145,6 @@ const GroupPage = () => {
           {" "}
           Welcome to <b>{group.name}</b>!
         </p>
-        <ol className="GroupPage__QuestionList">
-          {questionIdAndText.map((eachQuestion) => (
-            <li key={eachQuestion.question._id}>
-              {eachQuestion.question.text}
-            </li>
-          ))}
-        </ol>
         <Box sx={{ width: "100%" }}>
           <Box
             className="hello"
@@ -165,12 +158,21 @@ const GroupPage = () => {
               <Tab label="Members" value={0} {...a11yProps(0)} />
               <Tab label="Answers" value={1} {...a11yProps(1)} />
               {isLiveQuestion && (
-                <Tab label="Live Question" value={2} {...a11yProps(2)} />
+                <div>
+                  <Tab label="Live Question" value={2} {...a11yProps(2)} />
+                </div>
               )}
               {isAdmin && <Tab label="Admin" value={3} {...a11yProps(3)} />}
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
+            <ol className="GroupPage__QuestionList">
+              {questionIdAndText.map((eachQuestion) => (
+                <li key={eachQuestion.question._id}>
+                  {eachQuestion.question.text}
+                </li>
+              ))}
+            </ol>
             <MemberProfilesList
               groupMembers={groupMembers}
               currentUserInGroup={currentUserInGroup}

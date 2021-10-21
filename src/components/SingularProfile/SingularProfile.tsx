@@ -21,6 +21,7 @@ const SingularProfile = ({ groupMember, currentUserInGroup }: Props) => {
   // const memberAnswers = groupMember.answers;
   // console.log(memberAnswers);
   // const commonAnswers: boolean[] = [];
+  let matchCount = 0;
   const questionsTextAndAnswers = groupMember.answers.map((item, index) => {
     const container: any = {};
     container.question = questions.find(
@@ -31,9 +32,18 @@ const SingularProfile = ({ groupMember, currentUserInGroup }: Props) => {
 
     if (container.answer === currentUserInGroup.answers[index].answer) {
       container.match = true;
+      matchCount++;
     }
     return container;
   });
+
+  //Function to calculate match percentage
+  function calcMatchPercentage(matchCount: number) {
+    if (matchCount === 0) {
+      return "0";
+    }
+    return ((matchCount / groupMember.answers.length) * 100).toFixed(1);
+  }
 
   return (
     <div className="SingularProfile">
@@ -60,6 +70,9 @@ const SingularProfile = ({ groupMember, currentUserInGroup }: Props) => {
             </li>
           ))}
         </ol>
+        <p className="matchPercentage">
+          Match Percentage: {calcMatchPercentage(matchCount)}%
+        </p>
         {/* <Typography variant="body2">
           {groupMember.answers.map(
             (eachAnswer) =>
