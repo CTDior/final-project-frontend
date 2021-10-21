@@ -41,18 +41,26 @@ function LiveQuestion({ group, groupMembers, onUpdate }: Props) {
     updateGroupMember(updatedGroupMember).then(onUpdate);
   }
 
+  const loggedInMember: GroupMember | undefined = groupMembers.find(
+    (groupMember) => {
+      return user?.uid === groupMember.userUid;
+    }
+  );
   return (
     <div className="LiveQuestion">
-      {}
-      <SingularQuestion
-        groupMembers={groupMembers}
-        questionId={group.liveQuestionId!}
-        isLiveQuestion={true}
-      />
-      <ProfileQuestion
-        questionId={group.liveQuestionId!}
-        onAnswer={handleLiveAnswer}
-      />
+      {loggedInMember!.liveQuestionAnswer &&
+      loggedInMember!.liveQuestionAnswer.questionId === group.liveQuestionId ? (
+        <SingularQuestion
+          groupMembers={groupMembers}
+          questionId={group.liveQuestionId!}
+          isLiveQuestion={true}
+        />
+      ) : (
+        <ProfileQuestion
+          questionId={group.liveQuestionId!}
+          onAnswer={handleLiveAnswer}
+        />
+      )}
     </div>
   );
 }
