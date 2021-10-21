@@ -153,7 +153,10 @@ const GroupPage = () => {
           ))}
         </ol>
         <Box sx={{ width: "100%" }}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Box
+            className="hello"
+            sx={{ borderBottom: 1, borderColor: "divider" }}
+          >
             <Tabs
               value={value}
               onChange={handleChange}

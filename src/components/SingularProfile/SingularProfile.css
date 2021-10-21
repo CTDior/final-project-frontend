@@ -1,15 +1,15 @@
 /** @format */
 
+/* Makes member cards center in mobile view */
 .SingularProfile {
   display: flex;
-  margin-left: 20px;
   justify-content: center;
-  margin-bottom: 10px;
   flex-direction: column;
+  align-items: center;
 }
 
 .profileCard {
-  width: 225px;
+  width: 300px;
   text-align: left;
 }
 

@@ -1,4 +1,10 @@
 /** @format */
+.hello {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 .GroupPage__QuestionList {
   position: sticky;
   background: white;
