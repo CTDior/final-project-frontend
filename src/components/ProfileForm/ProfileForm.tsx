@@ -18,19 +18,11 @@ const ProfileForm = ({ group, onComplete }: Props) => {
   const [memberName, setMemberName] = useState(user?.displayName || "");
   const [birthday, setBirthday] = useState("");
   const [favoriteColor, setFavoriteColor] = useState("");
-  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [answers, setAnswers] = useState<string[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(-1);
 
   useEffect(() => {
-    setAnswers(
-      group.profileQuestions.map((questionId) => {
-        return { questionId: questionId, answer: "" };
-      })
-    );
-  }, [group]);
-
-  useEffect(() => {
-    if (currentQuestionIndex === answers.length) {
+    if (currentQuestionIndex === group.profileQuestions.length) {
       goToNextQuestion();
       // eslint-disable-next-line
       handleSave();
@@ -49,7 +41,9 @@ const ProfileForm = ({ group, onComplete }: Props) => {
       memberName: memberName,
       birthday: birthday,
       favoriteColor: favoriteColor,
-      answers: answers,
+      answers: group.profileQuestions.map((questionId, index) => {
+        return { questionId, answer: answers[index] };
+      }),
       liveQuestionAnswer: null,
     };
     handleAddGroupMember(groupMember);
@@ -74,10 +68,9 @@ const ProfileForm = ({ group, onComplete }: Props) => {
   }
 
   function setAnswer(index: number, answer: string) {
-    const newAnswer = { ...answers[index], answer };
     setAnswers((prev) => [
       ...prev.slice(0, index),
-      newAnswer,
+      answer,
       ...prev.slice(index + 1),
     ]);
   }
@@ -139,11 +132,11 @@ const ProfileForm = ({ group, onComplete }: Props) => {
           {/* <Button onClick={handleSubmit}>Create Your Profile!</Button> */}
           <Button type="submit">Continue to Profile Questions</Button>
         </form>
-      ) : currentQuestionIndex >= answers.length ? (
+      ) : currentQuestionIndex >= group.profileQuestions.length ? (
         <div>Saving...</div>
       ) : (
         <ProfileQuestion
-          questionId={answers[currentQuestionIndex].questionId}
+          questionId={group.profileQuestions[currentQuestionIndex]}
           onAnswer={handleAnswer}
         />
       )}
