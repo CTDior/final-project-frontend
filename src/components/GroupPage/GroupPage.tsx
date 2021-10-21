@@ -137,12 +137,12 @@ const GroupPage = () => {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              <Tab label="Members" {...a11yProps(0)} />
-              <Tab label="Answers" {...a11yProps(1)} />
+              <Tab label="Members" value={0} {...a11yProps(0)} />
+              <Tab label="Answers" value={1} {...a11yProps(1)} />
               {isLiveQuestion && (
-                <Tab label="Live Question" {...a11yProps(2)} />
+                <Tab label="Live Question" value={2} {...a11yProps(2)} />
               )}
-              {isAdmin && <Tab label="Admin" {...a11yProps(3)} />}
+              {isAdmin && <Tab label="Admin" value={3} {...a11yProps(3)} />}
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>

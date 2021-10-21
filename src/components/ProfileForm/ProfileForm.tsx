@@ -14,7 +14,8 @@ interface Props {
 }
 
 const ProfileForm = ({ group, onComplete }: Props) => {
-  const [memberName, setMemberName] = useState("");
+  const { user } = useContext(AuthContext);
+  const [memberName, setMemberName] = useState(user?.displayName || "");
   const [birthday, setBirthday] = useState("");
   const [favoriteColor, setFavoriteColor] = useState("");
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -35,8 +36,6 @@ const ProfileForm = ({ group, onComplete }: Props) => {
       handleSave();
     } // eslint-disable-next-line
   }, [currentQuestionIndex, answers]);
-
-  const { user } = useContext(AuthContext);
 
   function handleAddGroupMember(groupMember: GroupMember) {
     addGroupMember(groupMember).then(onComplete);
@@ -97,7 +96,6 @@ const ProfileForm = ({ group, onComplete }: Props) => {
             fullWidth
             variant="standard"
             value={memberName}
-            placeholder={`${user!.displayName}`}
             onChange={(e) => setMemberName(e.target.value)}
           ></TextField>
           <TextField
