@@ -52,16 +52,17 @@ function Admin({ group, onUpdate }: Props) {
 
   return (
     <div className="Admin">
-      <div>
+      <div className="link">
         <p>
           Share this link with anyone you would like to invite to the group.
         </p>
         <Button variant="outlined" onClick={copy}>
-          {!copied ? "Copy link to share with group" : "Copied!"}
+          {!copied ? "Copy Link " : "Copied!"}
         </Button>
       </div>
       <div className="CreateAGroup">
-        <h2>Select a Live Question</h2>
+        <h2>Let's Do It Live!</h2>
+        <p>Select a new question for your group to answer RIGHT NOW</p>
         <FormControl>
           <InputLabel id="Live Question">Live Question</InputLabel>
           <Select
@@ -84,7 +85,7 @@ function Admin({ group, onUpdate }: Props) {
             variant="outlined"
             onClick={handleSubmit}
           >
-            Set Live Question
+            Ask Live Question
           </Button>
         </FormControl>
         <p>
