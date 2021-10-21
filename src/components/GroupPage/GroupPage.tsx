@@ -19,6 +19,7 @@ import GroupAnswers from "../GroupAnswers/GroupAnswers";
 import React from "react";
 import Admin from "../Admin/Admin";
 import LiveQuestion from "../LiveQuestion/LiveQuestion";
+import { bgcolor } from "@mui/system";
 
 interface RouteParams {
   id: string;
@@ -150,6 +151,18 @@ const GroupPage = () => {
           {" "}
           Welcome to <b>{group.name}</b>!
         </p>
+        <Box
+          className="GroupPage__QuestionList"
+          sx={{ bgcolor: "background.paper" }}
+        >
+          <ol>
+            {questionIdAndText.map((eachQuestion) => (
+              <li key={eachQuestion.question._id}>
+                {eachQuestion.question.text}
+              </li>
+            ))}
+          </ol>
+        </Box>
         <Box sx={{ width: "100%" }}>
           <Box
             className="hello"

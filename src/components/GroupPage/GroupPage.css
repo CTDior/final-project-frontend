@@ -7,7 +7,7 @@
 }
 .GroupPage__QuestionList {
   position: sticky;
-  background: white;
+  /* background: white; */
   top: 0px;
   border-bottom: 2px solid cornflowerblue;
   padding-bottom: 5px;

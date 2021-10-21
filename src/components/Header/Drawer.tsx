@@ -102,13 +102,13 @@ export default function TemporaryDrawer() {
                 <ListItemText primary={item.text} />
               </ListItem>
             ))}
-
-            <ListItem button component={RouterLink} to="/groups/:id">
+            {/* Live Activity Button */}
+            {/* <ListItem button component={RouterLink} to="/groups/:id">
               <ListItemIcon>
                 <VideogameAssetIcon color="secondary" />
               </ListItemIcon>
               <ListItemText>Live Activity</ListItemText>
-            </ListItem>
+            </ListItem> */}
 
             <ListItem button onClick={signOut}>
               <ListItemIcon>
