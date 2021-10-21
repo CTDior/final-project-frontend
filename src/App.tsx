@@ -10,7 +10,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { GoogleAuthProvider, signInWithPopup } from "@firebase/auth";
 import { auth } from "./firebaseConfig";
-import { Button, createTheme, Paper } from "@mui/material";
+import { Button, createTheme, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { Switch as MuiSwitch } from "@mui/material";
 
@@ -34,42 +34,41 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Paper style={{ height: "100vh" }}>
-          <Router>
-            <Header />
-            <MuiSwitch
-              checked={darkMode}
-              onChange={() => setDarkMode(!darkMode)}
-            />{" "}
-            Color Mode
-            {/* <h3>Break the Ice By Warming Up to Others!</h3> */}
-            {user ? (
-              <Switch>
-                <Route path="/" exact>
-                  <Homepage />
-                </Route>
-                <Route path="/group/create" exact>
-                  <CreateAGroup />
-                </Route>
-                <Route path="/group/:id">
-                  <GroupPage />
-                </Route>
-              </Switch>
-            ) : (
-              <div className="button">
-                {/* <button>Please Login To Continue</button> */}
-                <Button
-                  sx={{ margin: 2 }}
-                  onClick={signInWithGoogle}
-                  variant="contained"
-                  className="login"
-                >
-                  Log In To Continue
-                </Button>
-              </div>
-            )}
-          </Router>
-        </Paper>
+        <CssBaseline />
+        <Router>
+          <Header />
+          <MuiSwitch
+            checked={darkMode}
+            onChange={() => setDarkMode(!darkMode)}
+          />{" "}
+          Color Mode
+          {/* <h3>Break the Ice By Warming Up to Others!</h3> */}
+          {user ? (
+            <Switch>
+              <Route path="/" exact>
+                <Homepage />
+              </Route>
+              <Route path="/group/create" exact>
+                <CreateAGroup />
+              </Route>
+              <Route path="/group/:id">
+                <GroupPage />
+              </Route>
+            </Switch>
+          ) : (
+            <div className="button">
+              {/* <button>Please Login To Continue</button> */}
+              <Button
+                sx={{ margin: 2 }}
+                onClick={signInWithGoogle}
+                variant="contained"
+                className="login"
+              >
+                Log In To Continue
+              </Button>
+            </div>
+          )}
+        </Router>
       </ThemeProvider>
     </div>
   );

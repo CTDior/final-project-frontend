@@ -159,6 +159,8 @@ const GroupPage = () => {
               value={value}
               onChange={handleChange}
               aria-label="basic tabs example"
+              variant="scrollable"
+              scrollButtons="auto"
             >
               <Tab label="Members" value={0} {...a11yProps(0)} />
               <Tab label="Answers" value={1} {...a11yProps(1)} />
