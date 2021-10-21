@@ -65,16 +65,21 @@ const GroupPage = () => {
     profileQuestions: [],
     liveQuestionId: null,
   });
+  const [value, setValue] = React.useState(0);
+  const [loading, setLoading] = useState(true);
   const { id } = useParams<RouteParams>();
   const { user } = useContext(AuthContext);
 
   const loadGroup = useCallback(
     function () {
-      fetchGroupById(id).then((response) => {
+      const groupPromise = fetchGroupById(id).then((response) => {
         setGroup(response);
       });
-      fetchAllGroupMembers(id).then((response) => {
+      const memberPromise = fetchAllGroupMembers(id).then((response) => {
         setGroupMembers(response);
+      });
+      Promise.all([groupPromise, memberPromise]).then(() => {
+        setLoading(false);
       });
     },
     [id]
@@ -132,12 +137,12 @@ const GroupPage = () => {
     isLiveQuestion = true;
   }
 
-  const [value, setValue] = React.useState(0);
-
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-
+  if (loading) {
+    return <p>Loading...</p>;
+  }
   if (currentUserInGroup && group._id) {
     return (
       <div className="GroupPage">
