@@ -1,7 +1,7 @@
 /** @format */
 
 import { Box, Tab, Tabs, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Group, GroupMember } from "../../models/IceBreaker";
 import {
@@ -68,16 +68,38 @@ const GroupPage = () => {
   const { id } = useParams<RouteParams>();
   const { user } = useContext(AuthContext);
 
-  useEffect(loadGroup, [id]);
+  const loadGroup = useCallback(
+    function () {
+      fetchGroupById(id).then((response) => {
+        setGroup(response);
+      });
+      fetchAllGroupMembers(id).then((response) => {
+        setGroupMembers(response);
+      });
+    },
+    [id]
+  );
 
-  function loadGroup() {
-    fetchGroupById(id).then((response) => {
-      setGroup(response);
-    });
-    fetchAllGroupMembers(id).then((response) => {
-      setGroupMembers(response);
-    });
-  }
+  useEffect(loadGroup, [loadGroup]);
+
+  // Refresh the page
+  useEffect(() => {
+    let count = 0;
+    const interval = setInterval(() => {
+      loadGroup();
+      count++;
+      if (count >= 60) {
+        // 60 ticks is five minutes
+        stopInterval();
+      }
+    }, 5000);
+    function stopInterval() {
+      clearInterval(interval);
+    }
+    // By returning stopInterval, it will be called when we
+    // leave this component.
+    return stopInterval;
+  }, [loadGroup]);
 
   // getting the text of the questions to display at top of page
   // const memberAnswers = groupMember.answers;
